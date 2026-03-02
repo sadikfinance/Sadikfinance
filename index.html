@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sadik Finance</title>
+
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box;}
+
+body{
+    margin:0;
+    font-family:'Cormorant Garamond', serif;
+    background:#021018;
+    color:white;
+    position:relative;
+    overflow-x:hidden;
+}
+
+/* GLOBAL GLOW BACKGROUND */
+body::before{
+    content:"";
+    position:fixed;
+    width:100%;
+    height:100%;
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0,224,184,0.15), transparent 40%),
+        radial-gradient(circle at 80% 60%, rgba(0,224,184,0.12), transparent 40%),
+        radial-gradient(circle at 50% 90%, rgba(0,224,184,0.10), transparent 40%);
+    z-index:-1;
+}
+
+/* HERO */
+.hero{
+    text-align:center;
+    padding:120px 20px 80px;
+}
+
+.hero h1{
+    font-family:'Cinzel', serif;
+    font-size:64px;
+    letter-spacing:3px;
+    margin:0;
+    text-shadow:0 0 35px rgba(0,224,184,0.4);
+}
+
+.hero p{
+    margin-top:15px;
+    font-size:20px;
+    opacity:0.85;
+}
+
+/* SECTION */
+.section{
+    max-width:1000px;
+    margin:90px auto;
+    padding:60px 25px;
+    position:relative;
+}
+
+/* SECTION GLOW */
+.section::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:radial-gradient(circle at center, rgba(0,224,184,0.08), transparent 70%);
+    z-index:-1;
+}
+
+/* TITLE */
+.section-title{
+    font-size:28px;
+    font-weight:500;
+    margin-bottom:35px;
+    border-left:4px solid #00E0B8;
+    padding-left:14px;
+    letter-spacing:1px;
+}
+
+/* GRID */
+.grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:30px;
+}
+
+/* CARD */
+.card{
+    background:rgba(255,255,255,0.05);
+    backdrop-filter:blur(15px);
+    padding:28px;
+    border-radius:18px;
+    transition:0.35s ease;
+    box-shadow:0 0 25px rgba(0,224,184,0.15);
+    position:relative;
+}
+
+.card:hover{
+    transform:translateY(-8px);
+    box-shadow:0 0 40px rgba(0,224,184,0.5);
+}
+
+.card h3{
+    font-size:24px;
+    font-weight:600;
+    margin-top:0;
+    letter-spacing:0.5px;
+}
+
+.card p{
+    font-size:18px;
+    opacity:0.8;
+}
+
+/* RECOMMENDED CARD */
+.recommended{
+    border:2px solid #00E0B8;
+    box-shadow:0 0 45px rgba(0,224,184,0.6);
+}
+
+.badge{
+    position:absolute;
+    top:-14px;
+    left:25px;
+    background:#00E0B8;
+    color:black;
+    padding:6px 14px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:bold;
+}
+
+/* BUTTON */
+button{
+    margin-top:18px;
+    padding:12px 18px;
+    border:none;
+    border-radius:10px;
+    background:#00E0B8;
+    font-family:Arial, sans-serif;
+    font-weight:bold;
+    cursor:pointer;
+    width:100%;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#00caa6;
+}
+
+/* FOOTER */
+.footer{
+    text-align:center;
+    padding:70px 20px;
+    font-size:14px;
+    opacity:0.6;
+}
+</style>
+</head>
+
+<body>
+
+<!-- HERO -->
+<section class="hero">
+    <h1>Sadik Finance</h1>
+    <p>Professional Trading Resources & Prop Firm Guides</p>
+</section>
+
+<!-- RECOMMENDED -->
+<section class="section">
+    <div class="section-title">🔥 Recommended</div>
+
+    <div class="card recommended">
+        <div class="badge">50% OFF</div>
+        <h3>Maven Prop Firm</h3>
+        <p>Most working discount code available.</p>
+        <button onclick="location.href='maven.html'">
+        Get 50% Discount
+        </button>
+    </div>
+</section>
+
+<!-- FOREX TOOLS -->
+<section class="section">
+    <div class="section-title">📊 Forex Tools</div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Lot Size Calculator</h3>
+            <p>Calculate proper lot size based on risk.</p>
+            <button onclick="location.href='lot-calculator.html'">
+            Open Calculator
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- SMC ICT -->
+<section class="section">
+    <div class="section-title">🧠 SMC / ICT Concepts</div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Liquidity & Structure Guide</h3>
+            <p>Understand institutional order flow model.</p>
+            <button>Read Guide</button>
+        </div>
+    </div>
+</section>
+
+<!-- JOURNAL -->
+<section class="section">
+    <div class="section-title">📓 Journal Your Trades</div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Trading Journal Template</h3>
+            <p>Track performance & improve discipline.</p>
+            <button>Download</button>
+        </div>
+    </div>
+</section>
+
+<!-- ROADMAP -->
+<section class="section">
+    <div class="section-title">🗺 Prop Firm Roadmap</div>
+
+    <div class="grid">
+        <div class="card">
+            <h3>Challenge Passing Blueprint</h3>
+            <p>Step-by-step funded trader roadmap.</p>
+            <button>View Roadmap</button>
+        </div>
+    </div>
+</section>
+
+<div class="footer">
+© 2026 Sadik Finance | Educational Purpose Only
+</div>
+
+</body>
+</html>
