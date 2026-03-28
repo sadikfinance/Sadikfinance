@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Maven Exclusive Discounts</title>
+
+<style>
+
+*{box-sizing:border-box;}
+
+body{
+margin:0;
+font-family:Arial, sans-serif;
+background: radial-gradient(circle at 50% 20%, #0f5b5e 0%, #062a35 40%, #021018 85%);
+color:white;
+}
+
+.container{
+max-width:520px;
+margin:auto;
+padding:30px 20px 60px;
+}
+
+.logo{
+text-align:center;
+font-size:22px;
+font-weight:bold;
+letter-spacing:2px;
+margin-bottom:10px;
+}
+
+h1{
+text-align:center;
+margin:10px 0;
+font-size:24px;
+}
+
+.subtitle{
+text-align:center;
+opacity:0.8;
+margin-bottom:30px;
+}
+
+.card{
+background: rgba(255,255,255,0.06);
+backdrop-filter: blur(14px);
+padding:18px 20px;
+border-radius:16px;
+margin-bottom:15px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+cursor:pointer;
+transition:0.25s ease;
+position:relative;
+}
+
+.card:hover{
+background: rgba(255,255,255,0.12);
+transform: translateY(-2px);
+}
+
+.top{
+border:2px solid #00E0B8;
+box-shadow:0 0 25px rgba(0,224,184,0.6);
+}
+
+.badge{
+position:absolute;
+top:-10px;
+left:15px;
+background:#00E0B8;
+color:black;
+font-size:11px;
+padding:4px 10px;
+border-radius:20px;
+font-weight:bold;
+}
+
+.code{
+font-weight:bold;
+font-size:18px;
+}
+
+.status{
+font-size:11px;
+opacity:0.7;
+margin-top:3px;
+}
+
+.discount{
+opacity:0.85;
+}
+
+.copied{
+position:absolute;
+right:15px;
+top:50%;
+transform:translateY(-50%);
+background:#00E0B8;
+color:black;
+padding:5px 10px;
+border-radius:6px;
+font-size:12px;
+opacity:0;
+transition:0.3s;
+}
+
+.show{
+opacity:1;
+}
+
+.note{
+text-align:center;
+margin-top:25px;
+font-size:12px;
+opacity:0.6;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="logo">MAVEN</div>
+
+<h1>Exclusive Discount Codes</h1>
+<div class="subtitle">Click any code to copy & unlock discount</div>
+
+<!-- MOST WORKING -->
+
+<div class="card top" onclick="copyAndGo(this,'TRUSTED')">
+<div class="badge">MOST WORKING</div>
+<div>
+<div class="code">TRUSTED</div>
+<div class="status">Working 5 minutes ago</div>
+</div>
+<div class="discount">50% OFF ⭐</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<!-- Recent codes -->
+
+<div class="card" onclick="copyAndGo(this,'SHINY')">
+<div>
+<div class="code">SHINY</div>
+<div class="status">Working 20 minutes ago</div>
+</div>
+<div class="discount">8% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="card" onclick="copyAndGo(this,'A1TRADING5')">
+<div>
+<div class="code">A1TRADING5</div>
+<div class="status">Working 20 minutes ago</div>
+</div>
+<div class="discount">5% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="card" onclick="copyAndGo(this,'MATCH')">
+<div>
+<div class="code">MATCH</div>
+<div class="status">Working 30 minutes ago</div>
+</div>
+<div class="discount">8% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="card" onclick="copyAndGo(this,'HUNTER')">
+<div>
+<div class="code">HUNTER</div>
+<div class="status">Working 45 minutes ago</div>
+</div>
+<div class="discount">5% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="card" onclick="copyAndGo(this,'INVEST')">
+<div>
+<div class="code">INVEST</div>
+<div class="status">Working 1 hr ago</div>
+</div>
+<div class="discount">15% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="card" onclick="copyAndGo(this,'Secure')">
+<div>
+<div class="code">Secure</div>
+<div class="status">Working 1 hr ago</div>
+</div>
+<div class="discount">5% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="card" onclick="copyAndGo(this,'JARON')">
+<div>
+<div class="code">JARON</div>
+<div class="status">Working 1 hr ago</div>
+</div>
+<div class="discount">6% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="card" onclick="copyAndGo(this,'MVN8')">
+<div>
+<div class="code">MVN8</div>
+<div class="status">Working 1 day ago</div>
+</div>
+<div class="discount">8% OFF</div>
+<div class="copied">Copied ✓</div>
+</div>
+
+<div class="note">
+Codes ranked by most recently used.
+</div>
+
+</div>
+
+<script>
+
+function copyAndGo(card, code){
+
+var tempInput=document.createElement("input");
+tempInput.value=code;
+document.body.appendChild(tempInput);
+
+tempInput.select();
+document.execCommand("copy");
+
+document.body.removeChild(tempInput);
+
+var badge=card.querySelector(".copied");
+badge.classList.add("show");
+
+setTimeout(function(){
+window.location.href="https://fas.st/t/cHKCWvtC";
+},1200);
+
+}
+
+</script>
+
+</body>
+</html>

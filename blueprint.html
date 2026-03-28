@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prop Firm Blueprint | Sadik Finance</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
+<style>
+body{
+    margin:0;
+    font-family:Georgia, serif;
+    background:#08171d;
+    color:white;
+}
+
+.container{
+    max-width:900px;
+    margin:auto;
+    padding:80px 30px;
+}
+
+/* Briston-style glow branding */
+.brand{
+    text-align:center;
+    font-size:44px;
+    letter-spacing:6px;
+    font-weight:bold;
+    color:#00E0B8;
+    text-shadow:
+        0 0 5px #00E0B8,
+        0 0 15px #00E0B8,
+        0 0 30px rgba(0,224,184,0.6);
+    margin-bottom:15px;
+}
+
+.subtitle{
+    text-align:center;
+    opacity:0.85;
+    margin-bottom:60px;
+    font-size:22px;
+}
+
+/* Neon section glow */
+.section{
+    margin-bottom:40px;
+    padding:30px;
+    background:rgba(255,255,255,0.05);
+    border-radius:14px;
+    box-shadow:0 0 25px rgba(0,224,184,0.15);
+}
+
+h2{
+    border-bottom:2px solid #00E0B8;
+    padding-bottom:8px;
+}
+
+ul{
+    line-height:1.8;
+}
+
+.cta{
+    text-align:center;
+    margin-top:60px;
+}
+
+.cta a{
+    background:#00E0B8;
+    padding:14px 26px;
+    border-radius:8px;
+    font-weight:bold;
+    text-decoration:none;
+    color:black;
+    display:inline-block;
+    margin-bottom:20px;
+    box-shadow:0 0 15px rgba(0,224,184,0.4);
+}
+
+.cta button{
+    padding:12px 24px;
+    border:none;
+    background:#00E0B8;
+    border-radius:8px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 0 15px rgba(0,224,184,0.4);
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="brand">SADIK FINANCE</div>
+<div class="subtitle">Professional Prop Firm Trading Blueprint</div>
+
+<div class="section">
+<h2>Risk Management Framework</h2>
+<p>Never risk more than 0.5% to 1% per trade. Maintain a minimum 1:2 risk reward ratio. Daily loss limit should remain under 2% to protect account longevity.</p>
+</div>
+
+<div class="section">
+<h2>Market Structure Strategy</h2>
+<p>Focus on liquidity sweeps, market structure shifts, fair value gaps and institutional order flow concepts. Trade only at premium or discount zones based on higher timeframe bias.</p>
+</div>
+
+<div class="section">
+<h2>Entry Model</h2>
+<p>Use lower timeframe confirmation such as break of structure, displacement, mitigation blocks and confirmation candles before entering trades.</p>
+</div>
+
+<div class="section">
+<h2>Psychology Control</h2>
+<p>Avoid revenge trading. Avoid increasing risk after wins. Emotional control is more important than strategy.</p>
+</div>
+
+<div class="section">
+<h2>Challenge Phase Plan</h2>
+<p>Do not rush profit targets. One high probability trade per day is enough. Consistency beats frequency.</p>
+</div>
+
+<div class="section">
+<h2>Scaling Strategy</h2>
+<p>Scale only after stable win rate and drawdown control. Do not increase lot size emotionally.</p>
+</div>
+
+<div class="section">
+<h2>Journaling & Performance Tracking</h2>
+<p>Track win rate, average R:R, session performance, emotional state and mistakes. Improve based on data, not emotions.</p>
+</div>
+
+<div class="section">
+<h2>Common Reasons Traders Fail</h2>
+<ul>
+<li>Overtrading</li>
+<li>Breaking rules</li>
+<li>Poor psychology</li>
+<li>Inconsistent risk management</li>
+<li>Switching strategies frequently</li>
+</ul>
+</div>
+
+<div class="cta">
+<a href="https://maventrading.com?ref=sadiq07" target="_blank">
+Start With Maven Funded Account
+</a>
+<br>
+<button onclick="generatePDF()">Download Full Professional PDF</button>
+</div>
+
+</div>
+
+<script>
+function generatePDF(){
+
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    let y = 20;
+
+    function heading(text){
+        doc.setFont("helvetica","bold");
+        doc.setFontSize(18);
+        doc.setTextColor(0,150,130);
+        doc.text(text,20,y);
+        y+=10;
+        doc.setTextColor(0,0,0);
+    }
+
+    function paragraph(text){
+        doc.setFont("helvetica","normal");
+        doc.setFontSize(11);
+        const lines = doc.splitTextToSize(text,170);
+        doc.text(lines,20,y);
+        y += lines.length*7 + 5;
+        if(y>270){
+            doc.addPage();
+            y=20;
+        }
+    }
+
+    heading("SADIK FINANCE");
+    heading("Professional Prop Firm Trading Blueprint");
+
+    paragraph("This blueprint explains the complete structure required to pass funded account challenges consistently. It focuses on psychology, risk management, trade execution and structured journaling.");
+
+    heading("Risk Management Framework");
+    paragraph("Never risk more than 0.5% to 1% per trade. Maintain minimum 1:2 risk reward ratio. Daily loss under 2%.");
+
+    heading("Market Structure Strategy");
+    paragraph("Focus on liquidity sweeps, structure shifts, fair value gaps and institutional order flow. Trade premium or discount zones.");
+
+    heading("Entry Model");
+    paragraph("Use lower timeframe confirmation such as break of structure and mitigation blocks.");
+
+    heading("Psychology Control");
+    paragraph("Avoid revenge trading. Emotional control is critical.");
+
+    heading("Challenge Phase Plan");
+    paragraph("One high probability trade per day. Do not rush targets.");
+
+    heading("Scaling Strategy");
+    paragraph("Scale only after consistent performance and drawdown control.");
+
+    heading("Journaling & Performance Tracking");
+    paragraph("Track win rate, average R:R and session performance.");
+
+    heading("Common Reasons Traders Fail");
+    paragraph("Overtrading, breaking rules, poor psychology, inconsistent risk management.");
+
+    heading("Funded Account Start");
+    paragraph("Begin your funded journey using Maven Trading:");
+    paragraph("https://maventrading.com?ref=sadiq07");
+
+    doc.save("Sadik-Finance-Professional-Blueprint.pdf");
+}
+</script>
+
+</body>
+</html>
