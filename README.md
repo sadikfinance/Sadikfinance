@@ -1,2 +1,0 @@
-# Sadikfinance
-Free trading resource
