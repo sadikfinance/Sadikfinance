@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FX Calculators | Sadik Finance</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--primary:#00E0B8;--primary-soft:rgba(0,224,184,0.12);--primary-glow:rgba(0,224,184,0.35);--primary-border:rgba(0,224,184,0.4);}
+body.mode-lot{--primary:#00E0B8;--primary-soft:rgba(0,224,184,0.12);--primary-glow:rgba(0,224,184,0.35);--primary-border:rgba(0,224,184,0.4);}
+body.mode-pip{--primary:#3B9EFF;--primary-soft:rgba(59,158,255,0.12);--primary-glow:rgba(59,158,255,0.35);--primary-border:rgba(59,158,255,0.4);}
+body.mode-rr{--primary:#A78BFA;--primary-soft:rgba(167,139,250,0.12);--primary-glow:rgba(167,139,250,0.35);--primary-border:rgba(167,139,250,0.4);}
+body.mode-pl{--primary:#34D399;--primary-soft:rgba(52,211,153,0.12);--primary-glow:rgba(52,211,153,0.35);--primary-border:rgba(52,211,153,0.4);}
+body.mode-margin{--primary:#FB923C;--primary-soft:rgba(251,146,60,0.12);--primary-glow:rgba(251,146,60,0.35);--primary-border:rgba(251,146,60,0.4);}
+
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:#021018;color:white;min-height:100vh;}
+body::before{content:"";position:fixed;width:100%;height:100%;background:radial-gradient(circle at 20% 30%,var(--primary-soft),transparent 40%),radial-gradient(circle at 80% 60%,var(--primary-soft),transparent 40%);z-index:-1;transition:background 0.5s;}
+
+.navbar{position:fixed;width:100%;top:0;display:flex;justify-content:space-between;align-items:center;padding:15px 24px;background:rgba(2,16,24,0.88);backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,0.06);z-index:1000;}
+.logo{font-family:'Cinzel',serif;font-size:18px;color:var(--primary);letter-spacing:1px;text-decoration:none;transition:color 0.4s;}
+.home-btn{background:var(--primary);color:black;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;transition:background 0.4s,box-shadow 0.3s;}
+.home-btn:hover{box-shadow:0 4px 16px var(--primary-glow);}
+
+.main{max-width:680px;margin:88px auto 60px;padding:0 16px;}
+.page-title{font-family:'Cinzel',serif;font-size:24px;text-align:center;margin-bottom:6px;color:var(--primary);transition:color 0.4s;text-shadow:0 0 20px var(--primary-glow);}
+.page-sub{text-align:center;opacity:0.5;font-size:13px;margin-bottom:24px;}
+
+.tabs{display:flex;overflow-x:auto;gap:8px;margin-bottom:22px;padding-bottom:4px;scrollbar-width:none;}
+.tabs::-webkit-scrollbar{display:none;}
+.tab-btn{flex-shrink:0;padding:9px 16px;border:1px solid rgba(255,255,255,0.1);border-radius:20px;background:transparent;color:rgba(255,255,255,0.6);font-size:12px;font-weight:500;cursor:pointer;white-space:nowrap;transition:all 0.3s;font-family:'Inter',sans-serif;}
+.tab-btn:hover{border-color:var(--primary-border);color:white;background:var(--primary-soft);}
+.tab-btn.active{background:var(--primary);color:black;border-color:var(--primary);font-weight:700;box-shadow:0 4px 16px var(--primary-glow);}
+
+.calc-card{background:rgba(255,255,255,0.04);backdrop-filter:blur(14px);border-radius:20px;padding:26px 22px;border:1px solid rgba(255,255,255,0.07);box-shadow:0 0 30px var(--primary-glow);display:none;transition:box-shadow 0.4s;animation:cardIn 0.35s ease;}
+.calc-card.active{display:block;}
+@keyframes cardIn{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:translateY(0);}}
+
+.calc-title{font-family:'Cinzel',serif;font-size:17px;color:var(--primary);margin-bottom:4px;transition:color 0.4s;}
+.calc-desc{font-size:12px;opacity:0.5;margin-bottom:20px;line-height:1.6;}
+
+.form-group{display:flex;flex-direction:column;gap:5px;margin-bottom:14px;}
+label{font-size:12px;opacity:0.65;font-weight:500;letter-spacing:0.3px;}
+input,select{background:rgba(255,255,255,0.07);border:1px solid rgba(255,255,255,0.1);border-radius:9px;color:white;padding:11px 13px;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color 0.3s,background 0.3s,box-shadow 0.3s;width:100%;}
+input:focus,select:focus{border-color:var(--primary);background:var(--primary-soft);box-shadow:0 0 0 3px var(--primary-glow);}
+select option{background:#052e2b;color:white;}
+
+.calc-btn{width:100%;padding:13px;background:var(--primary);border:none;border-radius:11px;color:black;font-weight:700;font-size:14px;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:1px;margin-top:6px;transition:transform 0.15s,box-shadow 0.3s,background 0.4s;box-shadow:0 4px 20px var(--primary-glow);}
+.calc-btn:hover{box-shadow:0 6px 28px var(--primary-glow);transform:translateY(-1px);}
+.calc-btn:active{transform:scale(0.97);}
+
+.result-box{margin-top:20px;background:var(--primary-soft);border:1px solid var(--primary-border);border-radius:14px;padding:20px;display:none;transition:border-color 0.4s,background 0.4s,box-shadow 0.4s;}
+.result-box.show{display:block;animation:resultIn 0.4s cubic-bezier(0.34,1.56,0.64,1);}
+@keyframes resultIn{from{opacity:0;transform:scale(0.95);}to{opacity:1;transform:scale(1);}}
+.result-box.pulse{animation:resultPulse 0.5s ease;}
+@keyframes resultPulse{0%{box-shadow:0 0 0 0 var(--primary-glow);}50%{box-shadow:0 0 30px 8px var(--primary-glow);}100%{box-shadow:0 0 0 0 var(--primary-glow);}}
+
+.result-label{font-size:11px;opacity:0.5;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;}
+.result-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.result-item{background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;}
+.result-item .rl{font-size:11px;opacity:0.55;margin-bottom:4px;}
+.result-item .rv{font-size:18px;font-weight:700;font-family:'Cinzel',serif;color:var(--primary);transition:color 0.4s;animation:numPop 0.4s ease;}
+@keyframes numPop{from{transform:scale(0.85);opacity:0;}to{transform:scale(1);opacity:1;}}
+.result-full{background:rgba(255,255,255,0.05);border-radius:10px;padding:14px;margin-top:10px;}
+.result-full .rl{font-size:11px;opacity:0.55;margin-bottom:4px;}
+.result-full .rv{font-size:22px;font-weight:700;font-family:'Cinzel',serif;color:var(--primary);transition:color 0.4s;animation:numPop 0.4s ease;}
+.tip-box{margin-top:12px;font-size:12px;opacity:0.6;line-height:1.7;padding:10px 12px;border-radius:8px;background:rgba(255,255,255,0.03);border-left:3px solid var(--primary);transition:border-color 0.4s;}
+.profit-color{color:#34D399 !important;}
+.loss-color{color:#F87171 !important;}
+</style>
+</head>
+<body class="mode-lot">
+
+<div class="navbar">
+  <a class="logo" href="index.html">Sadik Finance</a>
+  <a href="index.html" class="home-btn">Home</a>
+</div>
+
+<div class="main">
+  <div class="page-title">FX Calculators</div>
+  <div class="page-sub">Professional tools for precise trading decisions</div>
+
+  <div class="tabs">
+    <button class="tab-btn active" onclick="showCalc('lot',this)">Lot Size</button>
+    <button class="tab-btn" onclick="showCalc('pip',this)">Pip Value</button>
+    <button class="tab-btn" onclick="showCalc('rr',this)">Risk / Reward</button>
+    <button class="tab-btn" onclick="showCalc('pl',this)">Profit / Loss</button>
+    <button class="tab-btn" onclick="showCalc('margin',this)">Margin</button>
+  </div>
+
+  <!-- LOT SIZE -->
+  <div class="calc-card active" id="calc-lot">
+    <div class="calc-title">Lot Size Calculator</div>
+    <div class="calc-desc">Calculate the correct position size based on your risk percentage and stop loss distance.</div>
+    <div class="form-group"><label>Account Balance ($)</label><input type="number" id="lot-balance" placeholder="10000"></div>
+    <div class="form-group"><label>Risk Percentage (%)</label><input type="number" id="lot-risk" placeholder="1" step="0.1"></div>
+    <div class="form-group"><label>Stop Loss (Pips)</label><input type="number" id="lot-sl" placeholder="20"></div>
+    <div class="form-group">
+      <label>Currency Pair</label>
+      <select id="lot-pair">
+        <optgroup label="Major Pairs">
+          <option value="10">EUR/USD</option><option value="10">GBP/USD</option>
+          <option value="10">AUD/USD</option><option value="10">NZD/USD</option>
+          <option value="9.1">USD/JPY</option><option value="10">USD/CAD</option>
+          <option value="10">USD/CHF</option>
+        </optgroup>
+        <optgroup label="Cross Pairs">
+          <option value="10">EUR/GBP</option><option value="9.1">EUR/JPY</option>
+          <option value="9.1">GBP/JPY</option><option value="10">EUR/AUD</option>
+          <option value="10">AUD/CAD</option>
+        </optgroup>
+        <optgroup label="Metals"><option value="1">XAU/USD (Gold)</option></optgroup>
+      </select>
+    </div>
+    <button class="calc-btn" onclick="calcLot()">Calculate Position Size</button>
+    <div class="result-box" id="lot-result">
+      <div class="result-label">Results</div>
+      <div class="result-grid">
+        <div class="result-item"><div class="rl">Risk Amount</div><div class="rv" id="lot-risk-amt">—</div></div>
+        <div class="result-item"><div class="rl">Lot Size</div><div class="rv" id="lot-size">—</div></div>
+        <div class="result-item"><div class="rl">Mini Lots</div><div class="rv" id="lot-mini">—</div></div>
+        <div class="result-item"><div class="rl">Micro Lots</div><div class="rv" id="lot-micro">—</div></div>
+      </div>
+      <div class="tip-box" id="lot-tip"></div>
+    </div>
+  </div>
+
+  <!-- PIP VALUE -->
+  <div class="calc-card" id="calc-pip">
+    <div class="calc-title">Pip Value Calculator</div>
+    <div class="calc-desc">Find the monetary value of each pip based on your selected lot size.</div>
+    <div class="form-group">
+      <label>Currency Pair</label>
+      <select id="pip-pair">
+        <option value="10,4">EUR/USD</option><option value="10,4">GBP/USD</option>
+        <option value="10,4">AUD/USD</option><option value="10,4">NZD/USD</option>
+        <option value="9.1,2">USD/JPY</option><option value="10,4">USD/CAD</option>
+        <option value="10,4">USD/CHF</option><option value="10,4">EUR/GBP</option>
+        <option value="9.1,2">EUR/JPY</option><option value="9.1,2">GBP/JPY</option>
+        <option value="1,2">XAU/USD (Gold)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Lot Size</label>
+      <select id="pip-lot">
+        <option value="100000">1.00 Standard Lot</option>
+        <option value="50000">0.50 Standard Lot</option>
+        <option value="10000">0.10 Mini Lot</option>
+        <option value="5000">0.05 Mini Lot</option>
+        <option value="1000">0.01 Micro Lot</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Number of Pips</label><input type="number" id="pip-count" placeholder="20"></div>
+    <button class="calc-btn" onclick="calcPip()">Calculate Pip Value</button>
+    <div class="result-box" id="pip-result">
+      <div class="result-label">Results</div>
+      <div class="result-grid">
+        <div class="result-item"><div class="rl">Value Per Pip</div><div class="rv" id="pip-per">—</div></div>
+        <div class="result-item"><div class="rl">Total Value</div><div class="rv" id="pip-total">—</div></div>
+      </div>
+      <div class="tip-box" id="pip-tip"></div>
+    </div>
+  </div>
+
+  <!-- RISK REWARD -->
+  <div class="calc-card" id="calc-rr">
+    <div class="calc-title">Risk / Reward Calculator</div>
+    <div class="calc-desc">Calculate your R:R ratio and evaluate whether the trade setup is worth taking.</div>
+    <div class="form-group"><label>Entry Price</label><input type="number" id="rr-entry" placeholder="1.08500" step="0.00001"></div>
+    <div class="form-group"><label>Stop Loss Price</label><input type="number" id="rr-sl" placeholder="1.08200" step="0.00001"></div>
+    <div class="form-group"><label>Take Profit Price</label><input type="number" id="rr-tp" placeholder="1.09100" step="0.00001"></div>
+    <div class="form-group"><label>Account Balance ($)</label><input type="number" id="rr-balance" placeholder="10000"></div>
+    <div class="form-group"><label>Risk Amount ($)</label><input type="number" id="rr-risk" placeholder="100"></div>
+    <button class="calc-btn" onclick="calcRR()">Calculate Risk / Reward</button>
+    <div class="result-box" id="rr-result">
+      <div class="result-label">Results</div>
+      <div class="result-full"><div class="rl">Risk : Reward Ratio</div><div class="rv" id="rr-ratio">—</div></div>
+      <div class="result-grid" style="margin-top:10px;">
+        <div class="result-item"><div class="rl">Risk (Pips)</div><div class="rv" id="rr-risk-pips">—</div></div>
+        <div class="result-item"><div class="rl">Reward (Pips)</div><div class="rv" id="rr-reward-pips">—</div></div>
+        <div class="result-item"><div class="rl">Potential Loss</div><div class="rv" id="rr-loss" style="color:#F87171;">—</div></div>
+        <div class="result-item"><div class="rl">Potential Profit</div><div class="rv" id="rr-profit">—</div></div>
+      </div>
+      <div class="tip-box" id="rr-tip"></div>
+    </div>
+  </div>
+
+  <!-- PROFIT LOSS -->
+  <div class="calc-card" id="calc-pl">
+    <div class="calc-title">Profit / Loss Calculator</div>
+    <div class="calc-desc">Calculate the exact profit or loss for any trade setup before entering.</div>
+    <div class="form-group">
+      <label>Currency Pair</label>
+      <select id="pl-pair">
+        <option value="10">EUR/USD</option><option value="10">GBP/USD</option>
+        <option value="10">AUD/USD</option><option value="10">NZD/USD</option>
+        <option value="9.1">USD/JPY</option><option value="10">USD/CAD</option>
+        <option value="10">USD/CHF</option><option value="10">EUR/GBP</option>
+        <option value="9.1">EUR/JPY</option><option value="9.1">GBP/JPY</option>
+        <option value="1">XAU/USD (Gold)</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label>Trade Direction</label>
+      <select id="pl-type"><option value="buy">Buy (Long)</option><option value="sell">Sell (Short)</option></select>
+    </div>
+    <div class="form-group"><label>Lot Size</label><input type="number" id="pl-lot" placeholder="0.10" step="0.01"></div>
+    <div class="form-group"><label>Entry Price</label><input type="number" id="pl-entry" placeholder="1.08500" step="0.00001"></div>
+    <div class="form-group"><label>Exit Price</label><input type="number" id="pl-exit" placeholder="1.09100" step="0.00001"></div>
+    <button class="calc-btn" onclick="calcPL()">Calculate Profit / Loss</button>
+    <div class="result-box" id="pl-result">
+      <div class="result-label">Results</div>
+      <div class="result-full"><div class="rl">Profit / Loss</div><div class="rv" id="pl-amount">—</div></div>
+      <div class="result-grid" style="margin-top:10px;">
+        <div class="result-item"><div class="rl">Pips Moved</div><div class="rv" id="pl-pips">—</div></div>
+        <div class="result-item"><div class="rl">Per Pip Value</div><div class="rv" id="pl-pip-val">—</div></div>
+      </div>
+      <div class="tip-box" id="pl-tip"></div>
+    </div>
+  </div>
+
+  <!-- MARGIN -->
+  <div class="calc-card" id="calc-margin">
+    <div class="calc-title">Margin Calculator</div>
+    <div class="calc-desc">Calculate the required margin to open a position at your selected leverage.</div>
+    <div class="form-group">
+      <label>Currency Pair</label>
+      <select id="margin-pair">
+        <option value="1.085">EUR/USD</option><option value="1.27">GBP/USD</option>
+        <option value="0.65">AUD/USD</option><option value="0.61">NZD/USD</option>
+        <option value="0.0067">USD/JPY</option><option value="1.00">USD/CAD</option>
+        <option value="1.00">USD/CHF</option><option value="2300">XAU/USD (Gold)</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Lot Size</label><input type="number" id="margin-lot" placeholder="0.10" step="0.01"></div>
+    <div class="form-group">
+      <label>Leverage</label>
+      <select id="margin-leverage">
+        <option value="100">1:100</option><option value="200">1:200</option>
+        <option value="500">1:500</option><option value="1000">1:1000</option>
+        <option value="50">1:50</option><option value="30">1:30</option>
+      </select>
+    </div>
+    <div class="form-group"><label>Account Balance ($)</label><input type="number" id="margin-balance" placeholder="10000"></div>
+    <button class="calc-btn" onclick="calcMargin()">Calculate Margin</button>
+    <div class="result-box" id="margin-result">
+      <div class="result-label">Results</div>
+      <div class="result-grid">
+        <div class="result-item"><div class="rl">Required Margin</div><div class="rv" id="margin-req">—</div></div>
+        <div class="result-item"><div class="rl">Free Margin</div><div class="rv" id="margin-free">—</div></div>
+        <div class="result-item"><div class="rl">Margin Level</div><div class="rv" id="margin-level">—</div></div>
+        <div class="result-item"><div class="rl">Position Size</div><div class="rv" id="margin-pos">—</div></div>
+      </div>
+      <div class="tip-box" id="margin-tip"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+const modeMap={lot:'mode-lot',pip:'mode-pip',rr:'mode-rr',pl:'mode-pl',margin:'mode-margin'};
+
+function showCalc(id,btn){
+  document.querySelectorAll('.calc-card').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+  document.getElementById('calc-'+id).classList.add('active');
+  btn.classList.add('active');
+  document.body.className=modeMap[id];
+}
+
+function triggerResult(el){
+  el.classList.remove('show','pulse');
+  void el.offsetWidth;
+  el.classList.add('show','pulse');
+}
+
+function calcLot(){
+  const balance=parseFloat(document.getElementById('lot-balance').value);
+  const risk=parseFloat(document.getElementById('lot-risk').value);
+  const sl=parseFloat(document.getElementById('lot-sl').value);
+  const pv=parseFloat(document.getElementById('lot-pair').value);
+  if(!balance||!risk||!sl){alert('Please fill all fields');return;}
+  const riskAmt=balance*(risk/100);
+  const lot=riskAmt/(sl*pv);
+  document.getElementById('lot-risk-amt').textContent='$'+riskAmt.toFixed(2);
+  document.getElementById('lot-size').textContent=lot.toFixed(2);
+  document.getElementById('lot-mini').textContent=(lot*10).toFixed(1);
+  document.getElementById('lot-micro').textContent=(lot*100).toFixed(0);
+  document.getElementById('lot-tip').textContent=lot<0.01?'Lot size is very small. Consider adjusting your parameters.':lot>1?'Large lot size. Verify your risk settings carefully.':'Position size is within recommended range.';
+  triggerResult(document.getElementById('lot-result'));
+}
+
+function calcPip(){
+  const pv=document.getElementById('pip-pair').value.split(',');
+  const pipVal=parseFloat(pv[0]);
+  const units=parseFloat(document.getElementById('pip-lot').value);
+  const pips=parseFloat(document.getElementById('pip-count').value);
+  if(!pips){alert('Please enter number of pips');return;}
+  const perPip=(pipVal*units)/100000;
+  const total=perPip*pips;
+  document.getElementById('pip-per').textContent='$'+perPip.toFixed(2);
+  document.getElementById('pip-total').textContent='$'+total.toFixed(2);
+  document.getElementById('pip-tip').textContent=pips+' pips with selected lot = $'+total.toFixed(2)+' total value.';
+  triggerResult(document.getElementById('pip-result'));
+}
+
+function calcRR(){
+  const entry=parseFloat(document.getElementById('rr-entry').value);
+  const sl=parseFloat(document.getElementById('rr-sl').value);
+  const tp=parseFloat(document.getElementById('rr-tp').value);
+  const riskAmt=parseFloat(document.getElementById('rr-risk').value);
+  if(!entry||!sl||!tp){alert('Please fill Entry, SL and TP');return;}
+  const riskPips=Math.abs(entry-sl)*10000;
+  const rewardPips=Math.abs(tp-entry)*10000;
+  const ratio=(rewardPips/riskPips).toFixed(2);
+  const profit=riskAmt?(riskAmt*ratio).toFixed(2):null;
+  document.getElementById('rr-ratio').textContent='1 : '+ratio;
+  document.getElementById('rr-risk-pips').textContent=riskPips.toFixed(1);
+  document.getElementById('rr-reward-pips').textContent=rewardPips.toFixed(1);
+  document.getElementById('rr-loss').textContent=riskAmt?'-$'+riskAmt:'—';
+  document.getElementById('rr-profit').textContent=profit?'+$'+profit:'—';
+  document.getElementById('rr-tip').textContent=ratio>=2?'Excellent R:R ratio. This setup is worth considering.':ratio>=1.5?'Acceptable R:R ratio.':ratio>=1?'Minimum R:R. Consider finding a better entry.':'Poor R:R. Avoid this setup.';
+  triggerResult(document.getElementById('rr-result'));
+}
+
+function calcPL(){
+  const pv=parseFloat(document.getElementById('pl-pair').value);
+  const type=document.getElementById('pl-type').value;
+  const lot=parseFloat(document.getElementById('pl-lot').value);
+  const entry=parseFloat(document.getElementById('pl-entry').value);
+  const exit=parseFloat(document.getElementById('pl-exit').value);
+  if(!lot||!entry||!exit){alert('Please fill all fields');return;}
+  const pips=type==='buy'?(exit-entry)*10000:(entry-exit)*10000;
+  const perPip=pv*lot;
+  const total=pips*perPip;
+  const amtEl=document.getElementById('pl-amount');
+  amtEl.textContent=(total>=0?'+$':'-$')+Math.abs(total).toFixed(2);
+  amtEl.className='rv '+(total>=0?'profit-color':'loss-color');
+  document.getElementById('pl-pips').textContent=(pips>=0?'+':'')+pips.toFixed(1);
+  document.getElementById('pl-pip-val').textContent='$'+perPip.toFixed(2);
+  document.getElementById('pl-tip').textContent=total>=0?'Profitable trade. +$'+total.toFixed(2)+' gained.':'Loss trade. -$'+Math.abs(total).toFixed(2)+' lost.';
+  triggerResult(document.getElementById('pl-result'));
+}
+
+function calcMargin(){
+  const price=parseFloat(document.getElementById('margin-pair').value);
+  const lot=parseFloat(document.getElementById('margin-lot').value);
+  const lev=parseFloat(document.getElementById('margin-leverage').value);
+  const bal=parseFloat(document.getElementById('margin-balance').value);
+  if(!lot){alert('Please enter lot size');return;}
+  const pos=lot*100000*price;
+  const req=pos/lev;
+  const free=bal?(bal-req):null;
+  const lvl=bal?((bal/req)*100).toFixed(0):null;
+  document.getElementById('margin-req').textContent='$'+req.toFixed(2);
+  document.getElementById('margin-free').textContent=free!==null?'$'+free.toFixed(2):'—';
+  document.getElementById('margin-level').textContent=lvl?lvl+'%':'—';
+  document.getElementById('margin-pos').textContent='$'+pos.toFixed(0);
+  document.getElementById('margin-tip').textContent=lvl?lvl>1000?'Safe margin level. Sufficient free margin available.':lvl>200?'Acceptable margin level.':lvl>100?'Low margin level. Risk of margin call.':'Danger. Margin call likely. Reduce lot size.':'Enter account balance to view margin level analysis.';
+  triggerResult(document.getElementById('margin-result'));
+}
+</script>
+</body>
+</html>
