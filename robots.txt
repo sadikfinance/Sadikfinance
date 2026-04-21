@@ -1,5 +1,0 @@
-User-agent: *
-Allow: /
-Disallow: /config/
-
-Sitemap: https://sadikfinance.github.io/sitemap.xml
