@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prop Firm Blueprint 2026 — Pass Challenges with ICT & SMC | Sadik Finance</title>
+<meta name="description" content="Complete prop firm trading blueprint by Sadik Finance. Rules, strategy, risk management, ICT/SMC concepts and a step-by-step guide to pass funded challenges and earn your first payout.">
+<meta name="keywords" content="prop firm blueprint, ICT trading, SMC trading, funded challenge strategy, forex trading guide, sadik finance, pass funded account">
+<link rel="canonical" href="https://sadikfinance.github.io/Sadikfinance/blueprint/">
+<meta property="og:title" content="Prop Firm Blueprint 2026 — Pass Challenges with ICT & SMC | Sadik Finance">
+<meta property="og:description" content="Complete prop firm trading blueprint. Rules, ICT/SMC strategy, risk management and a step-by-step guide to pass funded challenges.">
+<meta property="og:url" content="https://sadikfinance.github.io/Sadikfinance/blueprint/">
+<meta property="og:image" content="https://sadikfinance.github.io/Sadikfinance/logo.webp">
+<meta property="og:type" content="website">
+<link rel="icon" type="image/webp" href="/Sadikfinance/logo.webp">
+<link rel="apple-touch-icon" href="/Sadikfinance/logo.webp">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Prop Firm Blueprint 2026 — Pass Challenges with ICT & SMC","author":{"@type":"Organization","name":"Sadik Finance"},"publisher":{"@type":"Organization","name":"Sadik Finance","logo":{"@type":"ImageObject","url":"https://sadikfinance.github.io/Sadikfinance/logo.webp"}},"url":"https://sadikfinance.github.io/Sadikfinance/blueprint/","description":"Complete prop firm trading blueprint with ICT/SMC strategy and risk management guide."}
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#021018,#052e2b,#064e3b);color:white;min-height:100vh;overflow-x:hidden;}
+body::before{content:"";position:fixed;width:100%;height:100%;background:radial-gradient(circle at 20% 30%, rgba(0,224,184,0.2), transparent 50%),radial-gradient(circle at 80% 70%, rgba(0,224,184,0.15), transparent 50%);z-index:-1;}
+.navbar{position:fixed;width:100%;top:0;display:flex;justify-content:space-between;align-items:center;padding:16px 25px;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);z-index:1000;}
+.logo{font-family:'Cinzel',serif;font-size:20px;color:#00E0B8;}
+.home-btn{background:#00E0B8;color:black;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;}
+.main{max-width:800px;margin:90px auto 60px;padding:0 16px;}
+.hero-section{text-align:center;padding:40px 20px;margin-bottom:30px;}
+.brand{font-family:'Cinzel',serif;font-size:32px;color:#00E0B8;text-shadow:0 0 20px rgba(0,224,184,0.6);margin-bottom:8px;}
+.subtitle{opacity:0.7;font-size:15px;margin-bottom:20px;}
+.download-btn{display:inline-block;padding:14px 30px;background:linear-gradient(135deg,#00E0B8,#00caa6);border:none;border-radius:12px;color:black;font-weight:700;font-size:15px;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:1px;transition:0.2s;text-decoration:none;}
+.download-btn:hover{transform:translateY(-2px);box-shadow:0 5px 25px rgba(0,224,184,0.5);}
+.rules-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px;}
+.rule-card{background:rgba(0,224,184,0.08);border:1px solid rgba(0,224,184,0.2);border-radius:12px;padding:14px;text-align:center;}
+.rule-val{font-family:'Cinzel',serif;font-size:20px;color:#00E0B8;margin-bottom:4px;}
+.rule-label{font-size:11px;opacity:0.7;}
+.section-card{background:rgba(255,255,255,0.05);backdrop-filter:blur(12px);border-radius:20px;padding:24px;margin-bottom:16px;box-shadow:0 0 25px rgba(0,224,184,0.1);border-left:4px solid #00E0B8;}
+.section-header{display:flex;align-items:center;gap:12px;margin-bottom:16px;cursor:pointer;}
+.section-icon{font-size:22px;}
+.section-title{font-family:'Cinzel',serif;font-size:16px;color:#00E0B8;}
+.toggle-icon{margin-left:auto;color:#00E0B8;font-size:18px;transition:0.3s;}
+.section-body{display:block;}
+.section-body.collapsed{display:none;}
+.section-body p{font-size:14px;line-height:1.8;opacity:0.85;margin-bottom:12px;}
+.section-body ul{list-style:none;padding:0;}
+.section-body ul li{font-size:14px;line-height:1.8;opacity:0.85;padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.05);display:flex;gap:10px;}
+.section-body ul li::before{content:"▸";color:#00E0B8;flex-shrink:0;}
+.tip-box{background:rgba(0,224,184,0.08);border-left:3px solid #00E0B8;border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:13px;line-height:1.7;}
+.warn-box{background:rgba(255,77,109,0.08);border-left:3px solid #ff4d6d;border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:13px;line-height:1.7;color:#ffb3c0;}
+.checklist{list-style:none;padding:0;}
+.checklist li{display:flex;gap:10px;padding:8px 0;border-bottom:1px solid rgba(255,255,255,0.05);font-size:14px;line-height:1.6;opacity:0.85;}
+.checklist li::before{content:"✅";flex-shrink:0;}
+.steps{display:flex;flex-direction:column;gap:12px;margin-top:10px;}
+.step{display:flex;gap:14px;align-items:flex-start;background:rgba(255,255,255,0.04);border-radius:12px;padding:14px;}
+.step-num{width:32px;height:32px;border-radius:50%;background:#00E0B8;color:black;font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.step-text{font-size:13px;line-height:1.7;opacity:0.85;}
+.step-text strong{color:#00E0B8;display:block;margin-bottom:3px;}
+.cta-section{background:rgba(0,224,184,0.08);border:1px solid rgba(0,224,184,0.3);border-radius:20px;padding:30px;text-align:center;margin-top:20px;}
+.cta-title{font-family:'Cinzel',serif;font-size:20px;color:#00E0B8;margin-bottom:8px;}
+.cta-sub{opacity:0.7;font-size:13px;margin-bottom:20px;}
+.cta-btn{display:inline-block;padding:14px 28px;background:#00E0B8;border-radius:12px;color:black;font-weight:700;text-decoration:none;font-size:14px;margin:6px;}
+</style>
+</head>
+<body>
+<div class="navbar">
+  <a href="/Sadikfinance/" class="logo" style="text-decoration:none;">Sadik Finance</a>
+  <a href="/Sadikfinance/" class="home-btn">← Home</a>
+</div>
+
+<div class="main">
+  <div class="hero-section">
+    <div class="brand">SADIK FINANCE</div>
+    <div class="subtitle">Professional Prop Firm Trading Blueprint — Complete Guide</div>
+    <button class="download-btn" onclick="generatePDF()">⬇️ Download PDF</button>
+  </div>
+
+  <!-- GOLDEN RULES -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('rules')">
+      <span class="section-icon">📏</span>
+      <span class="section-title">Golden Rules — Key Numbers</span>
+      <span class="toggle-icon" id="rules-icon">▾</span>
+    </div>
+    <div class="section-body" id="rules-body">
+      <div class="rules-grid">
+        <div class="rule-card"><div class="rule-val">0.5–1%</div><div class="rule-label">Max Risk Per Trade</div></div>
+        <div class="rule-card"><div class="rule-val">1:2+</div><div class="rule-label">Min Risk:Reward</div></div>
+        <div class="rule-card"><div class="rule-val">2–3%</div><div class="rule-label">Max Daily Loss</div></div>
+        <div class="rule-card"><div class="rule-val">5%</div><div class="rule-label">Max Total Drawdown</div></div>
+        <div class="rule-card"><div class="rule-val">1–3</div><div class="rule-label">Trades Per Day Max</div></div>
+        <div class="rule-card"><div class="rule-val">50%+</div><div class="rule-label">Target Win Rate</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- RISK MANAGEMENT -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('risk')">
+      <span class="section-icon">🛡️</span>
+      <span class="section-title">Risk Management Framework</span>
+      <span class="toggle-icon" id="risk-icon">▾</span>
+    </div>
+    <div class="section-body" id="risk-body">
+      <p>Risk management is the single most important skill in prop firm trading. Most traders fail not because of bad strategy, but because of poor risk control. Master this before anything else.</p>
+      <div class="tip-box">💡 <strong>Rule of Thumb:</strong> If losing 5 trades in a row would break you mentally — your risk per trade is too high. Drop it until losses feel manageable.</div>
+      <ul>
+        <li>Never risk more than 0.5% to 1% per trade on a funded account</li>
+        <li>Set a hard daily loss limit of 2–3% and stop trading the moment it is hit</li>
+        <li>Never move your stop loss further away once a trade is placed</li>
+        <li>Use a minimum 1:2 risk to reward on every single trade — no exceptions</li>
+        <li>After 2 consecutive losses, stop trading for the day and review what went wrong</li>
+        <li>Never add to a losing position — averaging down is one of the biggest account killers</li>
+        <li>Always calculate your lot size using a calculator BEFORE entering any trade</li>
+        <li>Correlation risk — never hold multiple USD pairs simultaneously in same direction</li>
+        <li>High impact news events can cause 50–100 pip spikes — avoid trading 15 min around them</li>
+        <li>Keep a separate emergency rule — if account drops 4% in one day, no more trades that week</li>
+      </ul>
+      <div class="warn-box">⚠️ <strong>Warning:</strong> Increasing lot size after losses to recover faster is the fastest way to blow a funded account. One bad revenge trade can erase 10 previous winning trades.</div>
+    </div>
+  </div>
+
+  <!-- ICT SMC -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('smc')">
+      <span class="section-icon">📊</span>
+      <span class="section-title">ICT / SMC Market Structure</span>
+      <span class="toggle-icon" id="smc-icon">▾</span>
+    </div>
+    <div class="section-body" id="smc-body">
+      <p>Smart Money Concepts (SMC) is based on understanding how institutional traders — banks, hedge funds, central banks — actually move the market. Retail traders consistently lose because they trade against institutional flow without realizing it.</p>
+      <div class="tip-box">💡 <strong>Key Insight:</strong> Price always moves to grab liquidity first before making the real move. Liquidity sits above equal highs and below equal lows. This is where stop losses are placed — and institutions know it.</div>
+      <ul>
+        <li><strong>Market Structure Shift (MSS):</strong> When price breaks a significant swing high or low indicating a genuine change in trend direction. This is your signal to flip bias</li>
+        <li><strong>Break of Structure (BOS):</strong> Continuation of existing trend. A BOS confirms the trend is still intact. Use for trade entries in trend direction only</li>
+        <li><strong>Liquidity Sweep:</strong> Price raids previous highs or lows to collect retail stop losses before reversing. This is the entry trigger in SMC</li>
+        <li><strong>Fair Value Gap (FVG):</strong> A three candle pattern where the middle candle moves so fast it leaves an imbalance. Price returns to fill this gap — use as entry zone</li>
+        <li><strong>Order Block (OB):</strong> The last bearish candle before a bullish move — or last bullish candle before bearish move. These are areas of institutional orders</li>
+        <li><strong>Premium & Discount Zones:</strong> Draw a Fibonacci from swing low to swing high. Above 50% is premium — look to sell. Below 50% is discount — look to buy</li>
+        <li><strong>Mitigation Block:</strong> Area where institutional orders were placed but not fully filled. Price returns to complete the remaining orders</li>
+        <li><strong>Breaker Block:</strong> A failed order block that changes polarity — was resistance, becomes support after a strong break through it</li>
+        <li><strong>Inducement:</strong> A small liquidity pool intentionally placed to attract retail traders into wrong direction before the real institutional move</li>
+        <li><strong>Displacement:</strong> A strong impulsive move with large candles leaving FVGs — confirms institutional participation and gives high probability entry signals</li>
+      </ul>
+      <div class="tip-box">💡 <strong>HTF to LTF Approach:</strong> Weekly/Daily for bias → 4H/1H for structure → 15M/5M for entry. Never enter on 5M without checking Daily first.</div>
+    </div>
+  </div>
+
+  <!-- ENTRY MODEL -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('entry')">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Entry Model — Step by Step</span>
+      <span class="toggle-icon" id="entry-icon">▾</span>
+    </div>
+    <div class="section-body" id="entry-body">
+      <p>A clear entry model removes emotion from trading. When you have a defined rule set, you stop second-guessing and start executing with confidence and consistency.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">1</div><div class="step-text"><strong>HTF Bias (Daily/Weekly)</strong>Is the overall market bullish or bearish? Only trade in direction of higher timeframe trend. Mark key swing highs and lows. This step cannot be skipped.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text"><strong>Mid TF Structure (4H/1H)</strong>Identify order blocks, FVGs, and liquidity pools. Wait for price to reach a premium zone to sell or discount zone to buy. Patience here is critical.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text"><strong>Liquidity Sweep Confirmation</strong>Wait for price to grab liquidity — equal highs, equal lows, previous swing points — before looking for reversal entry. No sweep = no trade.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text"><strong>LTF Entry (15M/5M)</strong>Look for Market Structure Shift on lower timeframe. Displacement candle followed by FVG formation confirms entry. Enter on retest of FVG or order block.</div></div>
+        <div class="step"><div class="step-num">5</div><div class="step-text"><strong>SL and TP Placement</strong>Stop loss goes below or above the order block or liquidity low/high that was swept. Take profit at next liquidity pool or minimum 1:2 R:R target.</div></div>
+      </div>
+      <div class="tip-box" style="margin-top:14px;">💡 <strong>Patience is the edge:</strong> The best setups require 2–3 days of waiting. If a setup is not 100% clear, skip it. There will always be another high probability trade tomorrow.</div>
+    </div>
+  </div>
+
+  <!-- SESSIONS -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('sessions')">
+      <span class="section-icon">🕐</span>
+      <span class="section-title">Trading Sessions and Best Times</span>
+      <span class="toggle-icon" id="sessions-icon">▾</span>
+    </div>
+    <div class="section-body" id="sessions-body">
+      <p>Not all trading hours are equal. Institutional money moves during specific sessions. Trading outside these windows results in choppy, unpredictable price action and poor results.</p>
+      <ul>
+        <li><strong>London Session (8AM–12PM GMT):</strong> Highest volatility period. Best for EUR, GBP, CHF pairs. Institutions set the day's directional bias during this window</li>
+        <li><strong>New York Session (1PM–5PM GMT):</strong> Second highest volume globally. Best for all USD pairs. Often continues or reverses the London trend</li>
+        <li><strong>London–NY Overlap (1PM–4PM GMT):</strong> Most volatile period of the entire trading day. Highest liquidity. The best ICT setups consistently form during this window</li>
+        <li><strong>Asian Session (12AM–8AM GMT):</strong> Low volatility. Good for range trading JPY pairs only. Avoid directional breakout trades during Asian hours</li>
+        <li><strong>Pre-London Kill Zone (6AM–8AM GMT):</strong> ICT concept — London institutions set up liquidity grabs just before session opens. Watch for fake moves before 8AM</li>
+        <li><strong>Pre-NY Kill Zone (12PM–1PM GMT):</strong> NY prep window — smart money positions just before US session opens. High probability reversal zone</li>
+        <li><strong>Avoid Fridays after 3PM GMT:</strong> Low liquidity, widening spreads, unpredictable moves. Risky for funded accounts</li>
+        <li><strong>Avoid Sunday opens:</strong> Gap risk is highest on Sunday market open. Never hold positions into Sunday open on funded accounts</li>
+      </ul>
+      <div class="warn-box">⚠️ Always check Forex Factory economic calendar before each session. NFP, CPI, FOMC events cause extreme volatility. Avoid trading 30 minutes before and after these releases.</div>
+    </div>
+  </div>
+
+  <!-- PSYCHOLOGY -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('psych')">
+      <span class="section-icon">🧠</span>
+      <span class="section-title">Trading Psychology — Mental Mastery</span>
+      <span class="toggle-icon" id="psych-icon">▾</span>
+    </div>
+    <div class="section-body" id="psych-body">
+      <p>90% of trading success is mental. Two traders using the exact same strategy can have completely different results because of psychology alone. This is what separates consistent professionals from gamblers.</p>
+      <div class="warn-box">⚠️ <strong>Revenge Trading:</strong> Taking a trade immediately after a loss to get the money back is one of the most destructive habits in trading. It is emotionally driven — not analytically driven. It almost always results in a second, larger loss.</div>
+      <ul>
+        <li><strong>Accept Losses as Normal:</strong> A 60% win rate means 4 out of every 10 trades will lose. This is normal, healthy, and profitable. Losses are the cost of doing business</li>
+        <li><strong>Process Over Outcome:</strong> Judge yourself on whether you followed your rules — not on whether the trade won. A bad trade can win by luck. A good trade can lose by bad luck</li>
+        <li><strong>FOMO is your enemy:</strong> Never chase a trade that has already moved significantly. Another setup will come. Chasing leads to poor entries, poor stop placement, and poor results</li>
+        <li><strong>Overconfidence After Wins:</strong> A winning streak is the most dangerous time. Traders increase size after wins and one loss destroys weeks of work</li>
+        <li><strong>Boredom Trading:</strong> Taking trades just because you are bored or want "action" is pure gambling. Every trade needs a reason. Protecting capital is an action too</li>
+        <li><strong>Pre-Trade Routine:</strong> Before each session — review HTF bias, mark key levels, check economic calendar, set price alerts. Never trade reactively from raw price movement</li>
+        <li><strong>Post-Trade Review:</strong> After every trade — write what happened, what you felt, what you could improve. This builds professional discipline over time</li>
+        <li><strong>Hard Stop After Daily Limit:</strong> If daily 2–3% loss limit is hit — close the platform and walk away. The account will recover. Your confidence will not if you keep trading emotionally</li>
+        <li><strong>Physical State Matters:</strong> Do not trade when tired, hungry, stressed, or distracted. Your mental state directly affects your decision making quality</li>
+      </ul>
+      <div class="tip-box">💡 <strong>Daily Affirmation:</strong> "I only take A+ setups. I follow my rules every time. I accept losses as part of the process. I am building a professional trading career."</div>
+    </div>
+  </div>
+
+  <!-- CHALLENGE PLAN -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('challenge')">
+      <span class="section-icon">🏆</span>
+      <span class="section-title">Prop Firm Challenge Phase Plan</span>
+      <span class="toggle-icon" id="challenge-icon">▾</span>
+    </div>
+    <div class="section-body" id="challenge-body">
+      <p>Passing a prop firm challenge is not about making money fast. It is about proving consistency, discipline, and risk control over 30 days. Treat it like a job interview — not a casino.</p>
+      <div class="steps">
+        <div class="step"><div class="step-num">W1</div><div class="step-text"><strong>Week 1 — Slow Start</strong>Trade minimum lot size (0.5% risk max). Focus on getting just 2–3% profit. Do not rush. Adapt to the account. Build confidence. Target: 3–4% slowly and cleanly.</div></div>
+        <div class="step"><div class="step-num">W2</div><div class="step-text"><strong>Week 2 — Steady Progress</strong>Continue same approach. Look for 2–3 high quality trades per week maximum. If at 6–7% profit, you are perfectly on track. Never touch daily loss limit.</div></div>
+        <div class="step"><div class="step-num">W3</div><div class="step-text"><strong>Week 3 — Target Zone</strong>Should be approaching profit target. If close to target, reduce risk to 0.25% to protect gains. Do not gamble the last few percent on a risky trade.</div></div>
+        <div class="step"><div class="step-num">W4</div><div class="step-text"><strong>Week 4 — Conservative Finish</strong>Finish with minimal risk. Be extremely selective. One careless trade in week 4 can fail an entire month of disciplined work. Protect what you built.</div></div>
+      </div>
+      <div class="tip-box" style="margin-top:14px;">💡 Most prop firms require minimum 30 days of trading. Spread your trades. Showing 15–20 trading days across 30 days proves consistency to the firm.</div>
+      <ul style="margin-top:14px;">
+        <li>Never trade the first day of a challenge with full risk — warm up first</li>
+        <li>If you lose 3% in first week, reduce lot size and restart mentally</li>
+        <li>Do not force yourself to trade every day — quality trading days only</li>
+        <li>Take partial profits when well in profit — protect green positions</li>
+        <li>Phase 2 has lower profit target than Phase 1 — it is easier to pass</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- SCALING -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('scaling')">
+      <span class="section-icon">📈</span>
+      <span class="section-title">Scaling and Growing Your Income</span>
+      <span class="toggle-icon" id="scaling-icon">▾</span>
+    </div>
+    <div class="section-body" id="scaling-body">
+      <p>Once funded, the real journey begins. The goal is sustainable growth that qualifies for scaling plans, increasing account size and monthly income over time.</p>
+      <ul>
+        <li><strong>First 3 Months Goal:</strong> Focus purely on consistency. Target 4–6% monthly. Do not try to make 20% in month one — it creates bad habits</li>
+        <li><strong>Track Key Metrics:</strong> Win rate, average R:R, max monthly drawdown, best pairs, best sessions. Review these every month and improve</li>
+        <li><strong>Scaling Requirements:</strong> Most prop firms scale after 10% gain over 3 months with max 5% drawdown. Read your specific firm's scaling rules carefully</li>
+        <li><strong>Increase Lot Size Gradually:</strong> Only increase after 3 consecutive profitable months. Never increase based on one good week or emotional confidence</li>
+        <li><strong>Withdraw Monthly:</strong> Withdrawing profits every month gives you real income AND keeps your drawdown room clean for the next month</li>
+        <li><strong>Multiple Accounts Strategy:</strong> After proving 6 months of consistency, many traders run 2–3 funded accounts simultaneously to multiply monthly income</li>
+        <li><strong>Protect First Payout:</strong> When approaching your first payout, drop risk to 0.25% per trade. The first withdrawal builds trust with yourself and confirms the system works</li>
+      </ul>
+      <div class="tip-box">💡 <strong>Compound Effect:</strong> A $100k funded account making just 5% monthly = $5,000/month. After scaling to $200k that becomes $10,000/month from the exact same strategy and effort.</div>
+    </div>
+  </div>
+
+  <!-- MISTAKES -->
+  <div class="section-card" style="border-left-color:#ff4d6d;">
+    <div class="section-header" onclick="toggleSection('mistakes')">
+      <span class="section-icon">❌</span>
+      <span class="section-title">Why Traders Fail — Avoid These</span>
+      <span class="toggle-icon" id="mistakes-icon">▾</span>
+    </div>
+    <div class="section-body" id="mistakes-body">
+      <p>Understanding why traders fail is as important as knowing what to do right. Avoiding these mistakes puts you ahead of 80% of prop firm traders immediately.</p>
+      <ul>
+        <li><strong>Overtrading:</strong> Taking 10+ trades per day searching for wins. More trades means more emotional decisions, more fees, and more losses overall</li>
+        <li><strong>No Trading Plan:</strong> Opening charts without a bias, key levels, or clear entry criteria. Trading without a plan is gambling with extra steps</li>
+        <li><strong>Moving Stop Loss:</strong> Removing or widening stop loss hoping the trade comes back. This single habit destroys more funded accounts than any other mistake</li>
+        <li><strong>Closing Winners Too Early:</strong> Fear of losing profit causes traders to exit at 1:0.5 R when original target was 1:3. Let your winners run to target</li>
+        <li><strong>Strategy Hopping:</strong> Changing strategy after every losing week. No strategy wins 100% of the time. Consistency with one proven system beats jumping between 10 systems</li>
+        <li><strong>Ignoring News Events:</strong> Holding trades through NFP, FOMC, CPI. Even a perfect technical setup can be destroyed instantly by a 100 pip news spike</li>
+        <li><strong>Not Journaling:</strong> Traders who do not journal make the exact same mistakes for months or years without ever identifying the pattern</li>
+        <li><strong>Weekend Holding:</strong> Keeping trades open over weekends on funded accounts is extremely dangerous. Monday gap opens can hit stop losses or trigger rule violations immediately</li>
+        <li><strong>Forcing Trades:</strong> Trading when market is ranging or choppy because you feel you "should" be trading. The best traders sometimes sit out for 2–3 days waiting for clarity</li>
+        <li><strong>Comparison Trap:</strong> Seeing someone post 30% monthly gains and trying to replicate it immediately. Focus on your own consistent 5% journey. Their 30% likely comes with 30% drawdown risks</li>
+      </ul>
+      <div class="warn-box">⚠️ If you have failed multiple challenges in a row, it is almost always a psychology and discipline issue — not a strategy issue. The solution is smaller lots and stricter rules, not a new strategy or new prop firm.</div>
+    </div>
+  </div>
+
+  <!-- DAILY CHECKLIST -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('checklist')">
+      <span class="section-icon">✅</span>
+      <span class="section-title">Daily Trading Checklist</span>
+      <span class="toggle-icon" id="checklist-icon">▾</span>
+    </div>
+    <div class="section-body" id="checklist-body">
+      <p>Follow this checklist before every single trading session. Consistency in preparation directly creates consistency in trade execution.</p>
+      <ul class="checklist">
+        <li>Check Forex Factory — mark all high impact news events for the day</li>
+        <li>Review Daily and 4H charts — determine overall market bias</li>
+        <li>Mark key levels — order blocks, FVGs, liquidity pools, swing points</li>
+        <li>Set price alerts at key levels — do not sit watching charts all day</li>
+        <li>Check current drawdown — how much room do I have today?</li>
+        <li>Mentally set daily loss limit — stop trading if hit, zero exceptions</li>
+        <li>Review yesterday's trades in journal — identify any patterns or mistakes</li>
+        <li>Wait for London or NY session — avoid entering during Asian session</li>
+        <li>After each trade closes — journal the trade immediately with notes</li>
+        <li>End of session — screenshot charts, write performance summary in journal</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- JOURNALING -->
+  <div class="section-card">
+    <div class="section-header" onclick="toggleSection('journal')">
+      <span class="section-icon">📓</span>
+      <span class="section-title">Journaling and Performance Tracking</span>
+      <span class="toggle-icon" id="journal-icon">▾</span>
+    </div>
+    <div class="section-body" id="journal-body">
+      <p>The trading journal is your single most powerful improvement tool. Every consistently profitable professional trader journals. It is not optional — it is the difference between a professional and a gambler.</p>
+      <ul>
+        <li><strong>Record Every Trade:</strong> Pair, date and time, direction, entry price, SL, TP, result in dollars, R:R achieved, emotional state, and reason for entry</li>
+        <li><strong>Screenshot Charts:</strong> Before entry and after exit for every trade. Review weekly to identify recurring pattern mistakes</li>
+        <li><strong>Weekly Review (Sunday):</strong> Total trades, total P&L, win rate, best and worst pair, session performance, emotional state patterns. This is non-negotiable</li>
+        <li><strong>Monthly Performance Report:</strong> Compare month to month. Are the numbers improving? Which specific areas still need work?</li>
+        <li><strong>Find Your Best Setup:</strong> After 50+ journal entries, the data will clearly show which setups have your highest win rate. Focus exclusively on those</li>
+        <li><strong>Track Emotional State:</strong> Were you calm, anxious, confident, frustrated before taking the trade? Emotional state directly and measurably impacts decision quality</li>
+        <li><strong>Identify Best Session:</strong> Are you statistically better during London or New York? Morning or afternoon? Only journaling reveals this objective data</li>
+        <li><strong>Weekly Improvement List:</strong> Based on data — write 3 specific things to improve next week. Not feelings — actual data from your journal numbers</li>
+      </ul>
+      <div class="tip-box">💡 <strong>30-Day Challenge:</strong> Journal every single trade for 30 days straight without missing one. At the end of 30 days, you will know more about your own trading than any course, mentor, or paid signal service could ever teach you.</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-title">Ready to Get Funded?</div>
+    <div class="cta-sub">Start your prop firm journey with Maven Trading — best discount codes available</div>
+    <a href="https://app.mavenfunded.com/?ref=sadik" target="_blank" class="cta-btn maven-link">🚀 <span class="maven-cta">Start Maven Challenge</span></a>
+    <a href="/mavenfunded/" class="cta-btn" style="background:rgba(0,224,184,0.15);color:#00E0B8;border:1px solid #00E0B8;">🎟️ Get Discount Code</a>
+    <br><br>
+    <button class="download-btn" onclick="generatePDF()">⬇️ Download Full PDF</button>
+  </div>
+</div>
+
+<script>
+function toggleSection(id){
+  let body = document.getElementById(id+'-body');
+  let icon = document.getElementById(id+'-icon');
+  if(body.classList.contains('collapsed')){
+    body.classList.remove('collapsed');
+    icon.textContent='▾';
+  } else {
+    body.classList.add('collapsed');
+    icon.textContent='▸';
+  }
+}
+
+function generatePDF(){
+  const {jsPDF}=window.jspdf;
+  const doc=new jsPDF();
+  let y=20;
+
+  function chk(){if(y>270){doc.addPage();y=20;}}
+  function h1(t){chk();doc.setFont("helvetica","bold");doc.setFontSize(20);doc.setTextColor(0,150,130);doc.text(t,105,y,{align:"center"});y+=12;doc.setTextColor(0,0,0);}
+  function h2(t){chk();doc.setFont("helvetica","bold");doc.setFontSize(13);doc.setTextColor(0,150,130);doc.text(t,20,y);y+=2;doc.setDrawColor(0,150,130);doc.line(20,y,190,y);y+=8;doc.setTextColor(30,30,30);}
+  function para(t){doc.setFont("helvetica","normal");doc.setFontSize(10);doc.setTextColor(40,40,40);const l=doc.splitTextToSize(t,170);chk();doc.text(l,20,y);y+=l.length*6+3;}
+  function dot(t){doc.setFont("helvetica","normal");doc.setFontSize(10);doc.setTextColor(40,40,40);const l=doc.splitTextToSize("• "+t,165);chk();doc.text(l,25,y);y+=l.length*6+2;}
+
+  doc.setFillColor(2,16,24);doc.rect(0,0,210,297,'F');
+  doc.setFont("helvetica","bold");doc.setFontSize(26);doc.setTextColor(0,224,184);
+  doc.text("SADIK FINANCE",105,90,{align:"center"});
+  doc.setFontSize(15);doc.setTextColor(255,255,255);
+  doc.text("Professional Prop Firm Trading Blueprint",105,110,{align:"center"});
+  doc.setFontSize(11);doc.setTextColor(160,160,160);
+  doc.text("Risk Management | ICT/SMC | Psychology | Challenge Guide",105,125,{align:"center"});
+  doc.text("sadiquehussainwarsi.github.io/Sadikfinance",105,270,{align:"center"});
+
+  doc.addPage();y=20;
+  h1("SADIK FINANCE — Complete Blueprint");
+  h2("Golden Rules");
+  dot("Max risk per trade: 0.5% to 1%");dot("Minimum R:R: 1:2");dot("Max daily loss: 2–3%");dot("Max drawdown: 5%");dot("Max trades per day: 1–3");dot("Target win rate: 50%+");
+
+  h2("Risk Management");
+  para("Risk management is the most important skill. Most traders fail not because of bad strategy but because of poor risk control.");
+  dot("Never risk more than 1% per trade on funded account");dot("Set hard daily loss limit and stop when hit");dot("Never move SL further after trade is placed");dot("Never add to losing positions");dot("Calculate lot size before every entry");dot("Avoid trading around high impact news");
+
+  h2("ICT / SMC Concepts");
+  para("Price always moves to grab liquidity before making the real move. Understanding this gives you an edge over 90% of retail traders.");
+  dot("MSS: Market Structure Shift — trend change signal");dot("BOS: Break of Structure — trend continuation");dot("Liquidity Sweep: Price raids highs/lows before reversing");dot("FVG: Fair Value Gap — price returns to fill imbalance");dot("Order Block: Last candle before major move — key level");dot("Premium/Discount: Above 50% sell zone, below 50% buy zone");dot("Kill Zones: Pre-London 6–8AM GMT, Pre-NY 12–1PM GMT");
+
+  h2("Entry Model");
+  dot("Step 1: HTF Daily/Weekly — determine trend direction");dot("Step 2: 4H/1H — mark OBs, FVGs, liquidity pools");dot("Step 3: Wait for liquidity sweep confirmation");dot("Step 4: 15M/5M — MSS + displacement + FVG entry");dot("Step 5: SL below/above OB. TP at 1:2+ minimum");
+
+  h2("Trading Sessions");
+  dot("London 8AM–12PM GMT: Best for EUR/GBP — institutions set direction");dot("New York 1PM–5PM GMT: Best for USD pairs");dot("London-NY Overlap 1PM–4PM GMT: Highest volatility window");dot("Avoid Asian session for directional trades");dot("Avoid Friday after 3PM and Sunday opens");
+
+  h2("Trading Psychology");
+  para("90% of trading success is mental. Two traders with same strategy can have completely different results because of psychology.");
+  dot("Accept losses as normal — 40% loss rate is healthy at 60% win rate");dot("Never revenge trade — walk away after hitting daily limit");dot("Never increase risk after winning streak");dot("Avoid FOMO — another setup always comes");dot("Pre-trade routine every session — never trade reactively");dot("Post-trade journal entry — every single trade");
+
+  h2("Challenge Phase Plan");
+  dot("Week 1: 0.5% risk max. Target only 3% profit. Slow start");dot("Week 2: 2–3 trades per week. Stay consistent");dot("Week 3: Approaching target — reduce risk to protect gains");dot("Week 4: Conservative finish. Protect what you built");dot("Show 15–20 trading days across the month");
+
+  h2("Common Mistakes");
+  dot("Overtrading — quality over quantity always wins");dot("Moving stop loss hoping trade recovers");dot("Closing winners too early out of fear");dot("Switching strategy after every loss");dot("Ignoring high impact news events");dot("Not journaling — biggest mistake of all");dot("Holding trades over weekends");
+
+  h2("Daily Checklist");
+  dot("Check economic calendar for high impact events");dot("Review Daily + 4H for bias");dot("Mark key levels — OBs, FVGs, liquidity");dot("Set alerts — do not watch screen all day");dot("Check drawdown room before starting");dot("Journal every trade immediately");
+
+  h2("Journaling");
+  dot("Record every trade: pair, direction, entry, SL, TP, result, emotion");dot("Screenshot before and after every trade");dot("Weekly Sunday review — find patterns and mistakes");dot("Monthly comparison — are numbers improving?");dot("After 50 trades your journal shows your best setups");
+
+  doc.setFontSize(9);doc.setTextColor(120,120,120);
+  doc.text("© Sadik Finance — sadiquehussainwarsi.github.io/Sadikfinance",105,285,{align:"center"});
+  doc.save("Sadik-Finance-Complete-Blueprint.pdf");
+}
+</script>
+</body>
+</html>
