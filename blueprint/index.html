@@ -1,0 +1,704 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Funded Challenge Roadmap 2026 — Week-by-Week Blueprint | Sadik Finance</title>
+<meta name="description" content="Step-by-step funded challenge roadmap by Sadik Finance. Week-by-week plan from challenge day one to your first payout. Risk rules, milestones, and discipline tracker included.">
+<meta name="keywords" content="funded challenge roadmap, prop firm roadmap, pass funded account, week by week trading plan, sadik finance">
+<link rel="canonical" href="https://sadikfinance.github.io/roadmap/">
+<meta property="og:title" content="Funded Challenge Roadmap 2026 — Week-by-Week Blueprint | Sadik Finance">
+<meta property="og:description" content="Week-by-week funded challenge roadmap. From day one to first payout with milestones, risk rules and discipline tracking.">
+<meta property="og:url" content="https://sadikfinance.github.io/roadmap/">
+<meta property="og:image" content="https://sadikfinance.github.io/logo.webp">
+<link rel="icon" type="image/webp" href="/logo.webp">
+<link rel="apple-touch-icon" href="/logo.webp">
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+body{font-family:'Inter',sans-serif;background:linear-gradient(135deg,#021018,#052e2b,#064e3b);color:white;min-height:100vh;overflow-x:hidden;}
+body::before{content:"";position:fixed;width:100%;height:100%;background:radial-gradient(circle at 20% 30%,rgba(0,224,184,0.2),transparent 50%),radial-gradient(circle at 80% 70%,rgba(0,224,184,0.15),transparent 50%);z-index:-1;}
+
+.navbar{position:fixed;width:100%;top:0;display:flex;justify-content:space-between;align-items:center;padding:16px 25px;background:rgba(0,0,0,0.5);backdrop-filter:blur(10px);z-index:1000;}
+.logo{font-family:'Cinzel',serif;font-size:20px;color:#00E0B8;}
+.home-btn{background:#00E0B8;color:black;padding:7px 16px;border-radius:8px;text-decoration:none;font-weight:600;font-size:13px;}
+
+.main{max-width:700px;margin:90px auto 60px;padding:0 16px;}
+
+/* HERO */
+.hero{text-align:center;padding:36px 20px;background:rgba(255,255,255,0.04);border-radius:24px;margin-bottom:24px;border:1px solid rgba(0,224,184,0.2);box-shadow:0 0 40px rgba(0,224,184,0.15);}
+.hero-title{font-family:'Cinzel',serif;font-size:26px;color:#00E0B8;text-shadow:0 0 20px rgba(0,224,184,0.5);margin-bottom:8px;}
+.hero-sub{opacity:0.6;font-size:13px;margin-bottom:20px;}
+.hero-stats{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
+.hstat{background:rgba(0,224,184,0.1);border:1px solid rgba(0,224,184,0.2);border-radius:12px;padding:12px 16px;text-align:center;flex:1;min-width:80px;}
+.hstat-val{font-family:'Cinzel',serif;font-size:20px;color:#00E0B8;}
+.hstat-label{font-size:10px;opacity:0.6;margin-top:3px;}
+
+/* PROGRESS TRACKER */
+.progress-section{background:rgba(255,255,255,0.05);backdrop-filter:blur(12px);border-radius:20px;padding:22px;margin-bottom:20px;box-shadow:0 0 20px rgba(0,224,184,0.1);}
+.section-title{font-family:'Cinzel',serif;font-size:15px;color:#00E0B8;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+
+.progress-track{position:relative;padding:0 10px;}
+.progress-line{position:absolute;left:50%;top:0;bottom:0;width:3px;background:rgba(255,255,255,0.1);transform:translateX(-50%);z-index:0;}
+.progress-fill{position:absolute;left:50%;top:0;width:3px;background:linear-gradient(180deg,#00E0B8,#00caa6);transform:translateX(-50%);transition:height 1s ease;z-index:1;}
+
+/* MILESTONE */
+.milestone{display:flex;gap:16px;margin-bottom:28px;position:relative;z-index:2;}
+.milestone.right{flex-direction:row-reverse;}
+
+.milestone-dot{
+  width:44px;height:44px;border-radius:50%;
+  background:rgba(0,224,184,0.15);
+  border:2px solid rgba(0,224,184,0.3);
+  display:flex;align-items:center;justify-content:center;
+  font-size:18px;flex-shrink:0;
+  transition:0.3s;
+  cursor:pointer;
+}
+.milestone-dot.done{background:#00E0B8;border-color:#00E0B8;}
+.milestone-dot.done span{filter:brightness(0);}
+.milestone-dot.active{background:rgba(0,224,184,0.3);border-color:#00E0B8;box-shadow:0 0 15px rgba(0,224,184,0.5);animation:glow 2s infinite;}
+@keyframes glow{0%,100%{box-shadow:0 0 15px rgba(0,224,184,0.5);}50%{box-shadow:0 0 25px rgba(0,224,184,0.8);}}
+
+.milestone-content{
+  flex:1;
+  background:rgba(255,255,255,0.05);
+  border-radius:16px;
+  padding:16px;
+  border:1px solid rgba(255,255,255,0.06);
+  transition:0.3s;
+}
+.milestone-content.active-card{border-color:rgba(0,224,184,0.4);box-shadow:0 0 20px rgba(0,224,184,0.1);}
+.milestone-content.done-card{opacity:0.7;}
+
+.ms-phase{font-size:10px;color:#00E0B8;font-weight:600;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;}
+.ms-title{font-family:'Cinzel',serif;font-size:15px;margin-bottom:8px;}
+.ms-desc{font-size:12px;opacity:0.75;line-height:1.7;}
+.ms-tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px;}
+.ms-tag{padding:3px 10px;border-radius:20px;font-size:10px;font-weight:600;background:rgba(0,224,184,0.12);color:#00E0B8;border:1px solid rgba(0,224,184,0.2);}
+.ms-tag.warn{background:rgba(255,180,50,0.12);color:#ffb432;border-color:rgba(255,180,50,0.2);}
+.ms-tag.danger{background:rgba(255,77,109,0.12);color:#ff4d6d;border-color:rgba(255,77,109,0.2);}
+
+/* DO / DONT */
+.do-dont{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:16px;}
+.do-box,.dont-box{border-radius:14px;padding:14px;}
+.do-box{background:rgba(0,224,184,0.08);border:1px solid rgba(0,224,184,0.2);}
+.dont-box{background:rgba(255,77,109,0.08);border:1px solid rgba(255,77,109,0.2);}
+.box-title{font-size:12px;font-weight:700;margin-bottom:10px;}
+.do-box .box-title{color:#00E0B8;}
+.dont-box .box-title{color:#ff4d6d;}
+.box-item{font-size:11px;opacity:0.8;padding:4px 0;border-bottom:1px solid rgba(255,255,255,0.05);line-height:1.5;}
+.box-item:last-child{border-bottom:none;}
+.box-item::before{margin-right:5px;}
+.do-box .box-item::before{content:"[+]";}
+.dont-box .box-item::before{content:"[X]";}
+
+/* WEEK PLAN */
+.week-grid{display:grid;grid-template-columns:1fr;gap:10px;}
+.week-card{background:rgba(255,255,255,0.05);border-radius:14px;padding:16px;border-left:3px solid #00E0B8;}
+.week-card.w2{border-left-color:#00b894;}
+.week-card.w3{border-left-color:#fdcb6e;}
+.week-card.w4{border-left-color:#e17055;}
+.week-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;}
+.week-num{font-family:'Cinzel',serif;font-size:14px;color:#00E0B8;}
+.week-target{font-size:11px;padding:3px 10px;border-radius:20px;background:rgba(0,224,184,0.15);color:#00E0B8;}
+.week-desc{font-size:12px;opacity:0.75;line-height:1.7;}
+
+/* RULES TABLE */
+.rules-table{width:100%;border-collapse:collapse;font-size:13px;}
+.rules-table th{padding:10px 12px;text-align:left;background:rgba(0,224,184,0.1);color:#00E0B8;font-size:11px;text-transform:uppercase;letter-spacing:0.5px;}
+.rules-table td{padding:10px 12px;border-bottom:1px solid rgba(255,255,255,0.05);opacity:0.85;}
+.rules-table tr:last-child td{border-bottom:none;}
+.rules-table .pass{color:#00E0B8;font-weight:600;}
+.rules-table .fail{color:#ff4d6d;}
+
+/* PAYOUT SECTION */
+.payout-box{background:linear-gradient(135deg,rgba(0,224,184,0.12),rgba(0,150,130,0.08));border:1px solid rgba(0,224,184,0.3);border-radius:20px;padding:24px;text-align:center;margin-bottom:16px;box-shadow:0 0 30px rgba(0,224,184,0.15);}
+.payout-icon{font-size:48px;margin-bottom:10px;}
+.payout-title{font-family:'Cinzel',serif;font-size:22px;color:#00E0B8;margin-bottom:6px;}
+.payout-sub{font-size:13px;opacity:0.7;margin-bottom:16px;}
+.payout-steps{text-align:left;display:flex;flex-direction:column;gap:10px;}
+.pstep{display:flex;gap:12px;align-items:flex-start;background:rgba(255,255,255,0.04);border-radius:12px;padding:12px;}
+.pstep-num{width:28px;height:28px;border-radius:50%;background:#00E0B8;color:black;font-weight:700;font-size:12px;display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.pstep-text{font-size:13px;line-height:1.6;opacity:0.85;}
+.pstep-text strong{color:#00E0B8;display:block;margin-bottom:2px;}
+
+/* INCOME CALC */
+.income-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px;}
+.income-card{background:rgba(255,255,255,0.05);border-radius:12px;padding:14px;text-align:center;}
+.income-amount{font-family:'Cinzel',serif;font-size:20px;color:#00E0B8;}
+.income-label{font-size:10px;opacity:0.6;margin-top:4px;}
+.income-note{font-size:11px;opacity:0.5;margin-top:3px;}
+
+/* TIP / WARN BOXES */
+.tip-box{background:rgba(0,224,184,0.08);border-left:3px solid #00E0B8;border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:13px;line-height:1.7;}
+.warn-box{background:rgba(255,77,109,0.08);border-left:3px solid #ff4d6d;border-radius:0 10px 10px 0;padding:12px 16px;margin:12px 0;font-size:13px;line-height:1.7;color:#ffb3c0;}
+
+.card-wrap{background:rgba(255,255,255,0.05);backdrop-filter:blur(12px);border-radius:20px;padding:22px;margin-bottom:16px;box-shadow:0 0 20px rgba(0,224,184,0.08);}
+
+.cta-section{background:rgba(0,224,184,0.08);border:1px solid rgba(0,224,184,0.3);border-radius:20px;padding:28px;text-align:center;margin-top:20px;}
+.cta-title{font-family:'Cinzel',serif;font-size:20px;color:#00E0B8;margin-bottom:8px;}
+.cta-sub{opacity:0.7;font-size:13px;margin-bottom:18px;}
+.cta-btn{display:inline-block;padding:13px 26px;background:linear-gradient(135deg,#00E0B8,#00caa6);border-radius:12px;color:black;font-weight:700;text-decoration:none;font-size:14px;margin:5px;font-family:'Cinzel',serif;}
+/* PROP FIRM POPUP */
+.popup-overlay{position:fixed;inset:0;background:rgba(0,0,0,0.75);backdrop-filter:blur(6px);z-index:9000;display:none;align-items:center;justify-content:center;padding:20px;}
+.popup-overlay.open{display:flex;}
+.popup-box{background:linear-gradient(135deg,#021018,#052e2b);border:1px solid rgba(0,224,184,0.3);border-radius:24px;padding:28px 24px;max-width:420px;width:100%;box-shadow:0 0 60px rgba(0,224,184,0.2);position:relative;max-height:90vh;overflow-y:auto;}
+.popup-close{position:absolute;top:14px;right:16px;background:rgba(255,255,255,0.08);border:none;color:white;font-size:16px;cursor:pointer;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;}
+.popup-title{font-family:'Cinzel',serif;font-size:18px;color:#00E0B8;margin-bottom:6px;text-align:center;}
+.popup-sub{font-size:12px;opacity:0.6;text-align:center;margin-bottom:20px;}
+.firm-grid{display:flex;flex-direction:column;gap:10px;}
+.firm-card{display:flex;align-items:center;gap:14px;background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.08);border-radius:14px;padding:14px 16px;text-decoration:none;color:white;transition:0.2s;}
+.firm-card:hover{border-color:rgba(0,224,184,0.4);background:rgba(0,224,184,0.06);transform:translateY(-1px);}
+.firm-logo{width:52px;height:34px;object-fit:contain;filter:brightness(1.1);}
+.firm-info{flex:1;}
+.firm-name{font-weight:600;font-size:13px;margin-bottom:2px;}
+.firm-desc{font-size:11px;opacity:0.55;}
+.firm-arrow{font-size:13px;opacity:0.5;color:#00E0B8;}
+
+</head>
+<body>
+
+<div class="navbar">
+  <a href="/" class="logo" style="text-decoration:none;">Sadik Finance</a>
+  <a href="/" class="home-btn">← Home</a>
+</div>
+
+<div class="main">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-title">[★] Funded Account Roadmap</div>
+    <div class="hero-sub">From Challenge Start to First Payout — Complete Step by Step Guide</div>
+    <button onclick="downloadPDF()" style="margin-bottom:16px;padding:11px 24px;background:linear-gradient(135deg,#00E0B8,#00caa6);border:none;border-radius:10px;color:black;font-weight:700;font-size:13px;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:1px;">[↓] Download PDF</button>
+    <div class="hero-stats">
+      <div class="hstat"><div class="hstat-val">5</div><div class="hstat-label">Key Phases</div></div>
+      <div class="hstat"><div class="hstat-val">30</div><div class="hstat-label">Days Challenge</div></div>
+      <div class="hstat"><div class="hstat-val">80%</div><div class="hstat-label">Profit Split</div></div>
+      <div class="hstat"><div class="hstat-val">$5k+</div><div class="hstat-label">Monthly Potential</div></div>
+    </div>
+  </div>
+
+  <!-- PHASE ROADMAP -->
+  <div class="card-wrap">
+    <div class="section-title">[►] Complete Journey — Phase by Phase</div>
+
+    <!-- PHASE 1 -->
+    <div class="milestone">
+      <div class="milestone-dot done"><span>[DONE]</span></div>
+      <div class="milestone-content done-card">
+        <div class="ms-phase">Phase 0 — Before You Start</div>
+        <div class="ms-title">Preparation & Mindset</div>
+        <div class="ms-desc">Before buying any challenge, prepare yourself completely. A failed preparation is a prepared failure. Most traders skip this phase and pay for it later with failed challenges.</div>
+        <div class="ms-tags">
+          <span class="ms-tag">Study ICT/SMC</span>
+          <span class="ms-tag">Backtest 50+ trades</span>
+          <span class="ms-tag">Set risk rules</span>
+          <span class="ms-tag">Get discount code</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 2 -->
+    <div class="milestone right">
+      <div class="milestone-dot active"><span>[TARGET]</span></div>
+      <div class="milestone-content active-card">
+        <div class="ms-phase">Phase 1 — Challenge</div>
+        <div class="ms-title">Pass Phase 1 (30 Days)</div>
+        <div class="ms-desc">This is where most traders fail. The goal is NOT to make money fast — it is to prove you are a disciplined, consistent trader. Treat every trade like it could fail the account.</div>
+        <div class="ms-tags">
+          <span class="ms-tag">Target: 8–10%</span>
+          <span class="ms-tag">Max DD: 10%</span>
+          <span class="ms-tag warn">Daily limit: 5%</span>
+          <span class="ms-tag">Min 4 trade days</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 3 -->
+    <div class="milestone">
+      <div class="milestone-dot"><span>[LIST]</span></div>
+      <div class="milestone-content">
+        <div class="ms-phase">Phase 2 — Evaluation</div>
+        <div class="ms-title">Pass Phase 2 (Easier)</div>
+        <div class="ms-desc">Phase 2 has a lower profit target — usually 5%. Same rules apply. Many traders relax here and fail. Stay focused. Phase 2 is the final gate before funded status.</div>
+        <div class="ms-tags">
+          <span class="ms-tag">Target: 5%</span>
+          <span class="ms-tag">Same DD rules</span>
+          <span class="ms-tag warn">Stay consistent</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 4 -->
+    <div class="milestone right">
+      <div class="milestone-dot"><span>[BRIEF]</span></div>
+      <div class="milestone-content">
+        <div class="ms-phase">Phase 3 — Funded</div>
+        <div class="ms-title">Live Funded Account</div>
+        <div class="ms-desc">You are now trading with real firm money. The rules are the same but the psychology is different — real money feels heavier. Go slower here. Protect the account first, profit second.</div>
+        <div class="ms-tags">
+          <span class="ms-tag">Real money</span>
+          <span class="ms-tag">80% profit split</span>
+          <span class="ms-tag warn">Go conservative</span>
+          <span class="ms-tag danger">No revenge trades</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 5 -->
+    <div class="milestone">
+      <div class="milestone-dot"><span>[PAY]</span></div>
+      <div class="milestone-content">
+        <div class="ms-phase">Phase 4 — First Payout</div>
+        <div class="ms-title">Request Your First Payout</div>
+        <div class="ms-desc">After reaching the minimum payout threshold (usually 14 days minimum), request your first withdrawal. This is the moment everything becomes real. Celebrate — but stay disciplined.</div>
+        <div class="ms-tags">
+          <span class="ms-tag">Min 14 days</span>
+          <span class="ms-tag">Request payout</span>
+          <span class="ms-tag">Bank/Crypto</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- PHASE 6 -->
+    <div class="milestone right">
+      <div class="milestone-dot"><span>[SCALE]</span></div>
+      <div class="milestone-content">
+        <div class="ms-phase">Phase 5 — Scale Up</div>
+        <div class="ms-title">Scale & Multiply Income</div>
+        <div class="ms-desc">After 3 consistent months, qualify for scaling plan. Run multiple accounts. Compound your growth. This is where trading becomes a serious income stream.</div>
+        <div class="ms-tags">
+          <span class="ms-tag">3 month consistency</span>
+          <span class="ms-tag">Account scaling</span>
+          <span class="ms-tag">Multiple accounts</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- WEEK BY WEEK PLAN -->
+  <div class="card-wrap">
+    <div class="section-title">[►] Week by Week Challenge Plan</div>
+    <div class="week-grid">
+      <div class="week-card">
+        <div class="week-header">
+          <div class="week-num">Week 1 — Slow Start</div>
+          <div class="week-target">Target: 2–3%</div>
+        </div>
+        <div class="week-desc">
+          Trade minimum lot size. Risk only 0.5% per trade. Your only job this week is to NOT lose money and get comfortable with the platform. Take 2–3 high quality trades maximum. Do not chase profits. If you hit 3% this week you are perfectly on track — stop and wait for week 2.
+        </div>
+      </div>
+      <div class="week-card w2">
+        <div class="week-header">
+          <div class="week-num" style="color:#00b894;">Week 2 — Build Momentum</div>
+          <div class="week-target" style="background:rgba(0,184,148,0.15);color:#00b894;">Target: 5–6%</div>
+        </div>
+        <div class="week-desc">
+          Continue same approach. Look for 2–3 A+ setups only. By end of week 2 you should be at 5–6% total. If drawdown hits 3% in any single day this week — stop immediately and review. Never chase to recover weekly losses.
+        </div>
+      </div>
+      <div class="week-card w3">
+        <div class="week-header">
+          <div class="week-num" style="color:#fdcb6e;">Week 3 — Target Zone</div>
+          <div class="week-target" style="background:rgba(253,203,110,0.15);color:#fdcb6e;">Target: 8%</div>
+        </div>
+        <div class="week-desc">
+          You should be approaching the profit target. If already at 7–8% — reduce risk to 0.25% per trade. Do not take unnecessary risks to hit the exact target. Being 1% below target and safe is better than going over target and failing from a bad trade.
+        </div>
+      </div>
+      <div class="week-card w4">
+        <div class="week-header">
+          <div class="week-num" style="color:#e17055;">Week 4 — Protect & Close</div>
+          <div class="week-target" style="background:rgba(225,112,85,0.15);color:#e17055;">Target: Pass [DONE]</div>
+        </div>
+        <div class="week-desc">
+          This week is about protecting what you built. If target is hit — take 1 small trade per day maximum just to meet minimum trading day requirements. If target is not hit yet — take only the absolute best setups. One bad week 4 trade can erase an entire month of work.
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DO / DONT -->
+  <div class="card-wrap">
+    <div class="section-title">[►] Do & Don't During Challenge</div>
+    <div class="do-dont">
+      <div class="do-box">
+        <div class="box-title">[DONE] DO THIS</div>
+        <div class="box-item">Risk max 0.5–1% per trade</div>
+        <div class="box-item">Wait for A+ setups only</div>
+        <div class="box-item">Journal every trade same day</div>
+        <div class="box-item">Stop after 2 losses in a day</div>
+        <div class="box-item">Check calendar daily</div>
+        <div class="box-item">Trade London/NY sessions</div>
+        <div class="box-item">Set SL before entry</div>
+        <div class="box-item">Take partial profits</div>
+        <div class="box-item">Rest between sessions</div>
+        <div class="box-item">Review weekly performance</div>
+      </div>
+      <div class="dont-box">
+        <div class="box-title">[X] NEVER DO</div>
+        <div class="box-item">Revenge trade after loss</div>
+        <div class="box-item">Move SL further away</div>
+        <div class="box-item">Trade news events</div>
+        <div class="box-item">Hold trades over weekend</div>
+        <div class="box-item">Increase risk after wins</div>
+        <div class="box-item">Trade Asian session</div>
+        <div class="box-item">Skip stop loss placement</div>
+        <div class="box-item">Trade when emotional</div>
+        <div class="box-item">Add to losing positions</div>
+        <div class="box-item">Trade without a plan</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROP FIRM RULES TABLE -->
+  <div class="card-wrap">
+    <div class="section-title">[►] Prop Firm Rules — General Guidelines</div>
+    <div class="tip-box">[i] Always read your specific prop firm rules. These are general guidelines — exact numbers may vary by firm and account size.</div>
+    <table class="rules-table">
+      <tr>
+        <th>Rule</th>
+        <th>Phase 1</th>
+        <th>Phase 2</th>
+        <th>Funded</th>
+      </tr>
+      <tr>
+        <td>Profit Target</td>
+        <td class="pass">8–10%</td>
+        <td class="pass">5%</td>
+        <td>No target</td>
+      </tr>
+      <tr>
+        <td>Max Daily Loss</td>
+        <td class="fail">5%</td>
+        <td class="fail">5%</td>
+        <td class="fail">5%</td>
+      </tr>
+      <tr>
+        <td>Max Total Drawdown</td>
+        <td class="fail">10%</td>
+        <td class="fail">10%</td>
+        <td class="fail">10%</td>
+      </tr>
+      <tr>
+        <td>Min Trading Days</td>
+        <td>4 days</td>
+        <td>4 days</td>
+        <td>None</td>
+      </tr>
+      <tr>
+        <td>Time Limit</td>
+        <td>30 days</td>
+        <td>60 days</td>
+        <td>No limit</td>
+      </tr>
+      <tr>
+        <td>Profit Split</td>
+        <td>—</td>
+        <td>—</td>
+        <td class="pass">80%</td>
+      </tr>
+      <tr>
+        <td>Weekend Holding</td>
+        <td class="fail">Risky</td>
+        <td class="fail">Risky</td>
+        <td class="fail">Risky</td>
+      </tr>
+      <tr>
+        <td>News Trading</td>
+        <td class="fail">Avoid</td>
+        <td class="fail">Avoid</td>
+        <td class="fail">Avoid</td>
+      </tr>
+    </table>
+  </div>
+
+  <!-- COMMON FAIL REASONS -->
+  <div class="card-wrap">
+    <div class="section-title">[!] Why People Fail Challenges</div>
+    <div class="warn-box">Understanding why others fail is as important as knowing what to do. These are the real reasons 80% of challenges fail.</div>
+
+    <div style="display:flex;flex-direction:column;gap:10px;margin-top:4px;">
+      <div style="background:rgba(255,77,109,0.08);border-radius:12px;padding:14px;border-left:3px solid #ff4d6d;">
+        <div style="font-weight:600;color:#ff4d6d;font-size:13px;margin-bottom:4px;">[X] #1 — Overtrading on Day 1</div>
+        <div style="font-size:12px;opacity:0.8;line-height:1.6;">Traders open 5–10 trades on day 1 excited to start. They hit the daily loss limit immediately and the panic begins. Rule: Maximum 2 trades on day 1 of any challenge.</div>
+      </div>
+      <div style="background:rgba(255,77,109,0.08);border-radius:12px;padding:14px;border-left:3px solid #ff4d6d;">
+        <div style="font-weight:600;color:#ff4d6d;font-size:13px;margin-bottom:4px;">[X] #2 — Revenge Trading After First Loss</div>
+        <div style="font-size:12px;opacity:0.8;line-height:1.6;">One loss leads to an emotional trade to recover. That second trade is always bigger. That second trade usually loses too. Walk away after any loss and come back tomorrow.</div>
+      </div>
+      <div style="background:rgba(255,77,109,0.08);border-radius:12px;padding:14px;border-left:3px solid #ff4d6d;">
+        <div style="font-weight:600;color:#ff4d6d;font-size:13px;margin-bottom:4px;">[X] #3 — Trading NFP/CPI Without Closing Positions</div>
+        <div style="font-size:12px;opacity:0.8;line-height:1.6;">High impact news can move 100–200 pips in seconds. Holding a trade through NFP on a prop account is gambling. Close all trades 30 minutes before major news events.</div>
+      </div>
+      <div style="background:rgba(255,77,109,0.08);border-radius:12px;padding:14px;border-left:3px solid #ff4d6d;">
+        <div style="font-weight:600;color:#ff4d6d;font-size:13px;margin-bottom:4px;">[X] #4 — Rushing Profit Target in Week 3–4</div>
+        <div style="font-size:12px;opacity:0.8;line-height:1.6;">Traders see they need 3% more with 5 days left and start gambling. They increase lot size and blow the account. The target will come naturally if you trade your plan consistently.</div>
+      </div>
+      <div style="background:rgba(255,77,109,0.08);border-radius:12px;padding:14px;border-left:3px solid #ff4d6d;">
+        <div style="font-weight:600;color:#ff4d6d;font-size:13px;margin-bottom:4px;">[X] #5 — Holding Trades Over Weekend</div>
+        <div style="font-size:12px;opacity:0.8;line-height:1.6;">Markets gap on Sunday open. A 50 pip gap can hit your stop loss instantly or worse — blow through it. Never hold positions into the weekend on funded accounts. Always flat by Friday 3PM GMT.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAYOUT SECTION -->
+  <div class="payout-box">
+    <div class="payout-icon">[PAY]</div>
+    <div class="payout-title">First Payout Guide</div>
+    <div class="payout-sub">You passed the challenge. You are funded. Now here is how to get your first real payout.</div>
+    <div class="payout-steps">
+      <div class="pstep">
+        <div class="pstep-num">1</div>
+        <div class="pstep-text"><strong>Minimum 14 Days Trading</strong>Most prop firms require at least 14 calendar days of trading on the funded account before first payout. Meet this requirement first.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">2</div>
+        <div class="pstep-text"><strong>Reach Minimum Profit</strong>Some firms require minimum $100 or 1% profit before first payout. Check your firm's specific minimum. Build a buffer above this target before requesting.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">3</div>
+        <div class="pstep-text"><strong>Request via Dashboard</strong>Log into your prop firm dashboard. Find the "Request Payout" section. Choose your payment method — bank transfer, crypto (USDT), or Deel/Rise.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">4</div>
+        <div class="pstep-text"><strong>Processing Time</strong>Most payouts process within 1–5 business days. leading firms typically pay within 24–48 hours. Keep trading conservatively while waiting for payout to process.</div>
+      </div>
+      <div class="pstep">
+        <div class="pstep-num">5</div>
+        <div class="pstep-text"><strong>After First Payout</strong>Celebrate — but reset mentally. Start the next month fresh. Keep the same risk rules. Withdraw monthly. Build consistent track record for scaling plan eligibility.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- INCOME POTENTIAL -->
+  <div class="card-wrap">
+    <div class="section-title">[►] Income Potential — Real Numbers</div>
+    <div class="tip-box">[i] These are based on 5% monthly return — a conservative, sustainable target. Not the 30% promises you see on social media.</div>
+    <div class="income-grid">
+      <div class="income-card">
+        <div class="income-amount">$500</div>
+        <div class="income-label">$10k Account @ 5%</div>
+        <div class="income-note">After 80% split = $400/mo</div>
+      </div>
+      <div class="income-card">
+        <div class="income-amount">$2,000</div>
+        <div class="income-label">$50k Account @ 5%</div>
+        <div class="income-note">After 80% split = $2,000/mo</div>
+      </div>
+      <div class="income-card">
+        <div class="income-amount">$4,000</div>
+        <div class="income-label">$100k Account @ 5%</div>
+        <div class="income-note">After 80% split = $4,000/mo</div>
+      </div>
+      <div class="income-card">
+        <div class="income-amount">$12,000</div>
+        <div class="income-label">3x $100k Accounts</div>
+        <div class="income-note">Multiple accounts strategy</div>
+      </div>
+    </div>
+    <div class="warn-box" style="margin-top:14px;">[!] These numbers require consistent discipline every single month. One bad emotional month can set you back significantly. Protect every payout like it is your last.</div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-section">
+    <div class="cta-title">Start Your Funded Journey Today</div>
+    <div class="cta-sub">Exclusive discount codes for top prop firms — save money before you even start your challenge</div>
+    <a href="/coupons/" class="cta-btn">[★] Get Discount Codes</a>
+    <a href="/blueprint/" class="cta-btn outline">[►] Read Blueprint</a>
+    <br><br>
+    <button onclick="downloadPDF()" style="padding:13px 26px;background:linear-gradient(135deg,#00E0B8,#00caa6);border:none;border-radius:12px;color:black;font-weight:700;font-size:14px;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:1px;margin:5px;">[↓] Download PDF — Read Offline</button>
+    <br>
+    <button onclick="openFirmPopup()" style="padding:13px 26px;background:rgba(255,255,255,0.08);border:1px solid rgba(0,224,184,0.4);border-radius:12px;color:#00E0B8;font-weight:700;font-size:14px;cursor:pointer;font-family:'Cinzel',serif;letter-spacing:1px;margin:5px;">[LIST] Browse Prop Firms</button>
+  </div>
+
+</div>
+
+<script>
+function downloadPDF(){
+  const {jsPDF} = window.jspdf;
+  const doc = new jsPDF();
+  let y = 20;
+
+  function chk(n=15){ if(y+n>280){ doc.addPage(); y=20; } }
+  function h1(t){ chk(16); doc.setFont("helvetica","bold"); doc.setFontSize(20); doc.setTextColor(0,150,130); doc.text(t,105,y,{align:"center"}); y+=14; }
+  function h2(t){ chk(14); doc.setFont("helvetica","bold"); doc.setFontSize(13); doc.setTextColor(0,150,130); doc.text(t,20,y); y+=2; doc.setDrawColor(0,150,130); doc.line(20,y,190,y); y+=8; }
+  function p(t){ doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(30,30,30); const l=doc.splitTextToSize(t,170); chk(l.length*6+4); doc.text(l,20,y); y+=l.length*6+4; }
+  function dot(t){ doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(30,30,30); const l=doc.splitTextToSize("• "+t,165); chk(l.length*6+3); doc.text(l,25,y); y+=l.length*6+3; }
+  function red(t){ doc.setFont("helvetica","bold"); doc.setFontSize(10); doc.setTextColor(180,50,70); const l=doc.splitTextToSize("✗ "+t,165); chk(l.length*6+3); doc.text(l,25,y); y+=l.length*6+3; doc.setTextColor(30,30,30); }
+  function grn(t){ doc.setFont("helvetica","normal"); doc.setFontSize(10); doc.setTextColor(0,130,110); const l=doc.splitTextToSize("✓ "+t,165); chk(l.length*6+3); doc.text(l,25,y); y+=l.length*6+3; doc.setTextColor(30,30,30); }
+
+  // COVER PAGE
+  doc.setFillColor(2,16,24);
+  doc.rect(0,0,210,297,'F');
+  doc.setFont("helvetica","bold");
+  doc.setFontSize(28); doc.setTextColor(0,224,184);
+  doc.text("SADIK FINANCE",105,80,{align:"center"});
+  doc.setFontSize(18); doc.setTextColor(255,255,255);
+  doc.text("Funded Account Roadmap",105,100,{align:"center"});
+  doc.setFontSize(12); doc.setTextColor(160,160,160);
+  doc.text("From Challenge Start to First Payout",105,116,{align:"center"});
+  doc.text("Complete Step by Step Guide",105,128,{align:"center"});
+  doc.setFontSize(10);
+  doc.text("sadiquehussainwarsi.github.io/Sadikfinance",105,270,{align:"center"});
+
+  doc.addPage(); y=20;
+
+  h1("Funded Account Roadmap");
+
+  h2("Complete Phase Journey");
+  p("This roadmap covers everything from preparation to your first payout and beyond. Follow each phase in order. Do not skip steps.");
+  dot("Phase 0 — Preparation: Study ICT/SMC, backtest 50+ trades, set your risk rules");
+  dot("Phase 1 — Challenge: Pass Phase 1 in 30 days. Target 8–10%. Max DD 10%");
+  dot("Phase 2 — Evaluation: Lower target of 5%. Same rules. Stay focused");
+  dot("Phase 3 — Funded: Trade real firm money. 80% profit split");
+  dot("Phase 4 — First Payout: Request after 14 days minimum");
+  dot("Phase 5 — Scale: 3 consistent months → scaling plan → multiple accounts");
+
+  h2("Week by Week Challenge Plan");
+  p("Week 1 — SLOW START (Target: 2–3%)");
+  p("Trade minimum lot size. Risk only 0.5% per trade. Take 2–3 high quality trades maximum. Do not chase profits. Getting 3% in week 1 slowly is perfect.");
+  p("Week 2 — BUILD MOMENTUM (Target: 5–6%)");
+  p("Continue same approach. 2–3 A+ setups per week only. If drawdown hits 3% in any single day — stop immediately and review.");
+  p("Week 3 — TARGET ZONE (Target: 8%)");
+  p("Approaching profit target. If at 7–8% — reduce risk to 0.25% per trade. Protect gains. Do not gamble the last few percent.");
+  p("Week 4 — PROTECT AND CLOSE (Target: Pass)");
+  p("Protect what you built. Take 1 small trade per day maximum. One bad week 4 trade can erase an entire month of disciplined work.");
+
+  h2("DO This During Challenge");
+  grn("Risk max 0.5–1% per trade every single time");
+  grn("Wait for A+ setups only — skip anything unclear");
+  grn("Journal every trade the same day");
+  grn("Stop after 2 consecutive losses in one day");
+  grn("Check economic calendar every morning");
+  grn("Trade London and NY sessions only");
+  grn("Set stop loss before every entry");
+  grn("Take partial profits when available");
+  grn("Rest between sessions — do not overtrade");
+  grn("Review your weekly performance every Sunday");
+
+  h2("NEVER Do During Challenge");
+  red("Revenge trade after any loss");
+  red("Move stop loss further away once placed");
+  red("Trade during NFP, CPI, FOMC events");
+  red("Hold trades over the weekend");
+  red("Increase risk after winning streak");
+  red("Trade during Asian session for breakouts");
+  red("Enter any trade without stop loss placed");
+  red("Trade when tired, stressed, or emotional");
+  red("Add to losing positions");
+  red("Open charts without a bias and plan");
+
+  h2("Prop Firm Key Rules — General Guidelines");
+  dot("Phase 1 Profit Target: 8–10%");
+  dot("Phase 2 Profit Target: 5%");
+  dot("Max Daily Loss: 5% — hitting this fails your challenge immediately");
+  dot("Max Total Drawdown: 10% — hitting this fails your challenge");
+  dot("Minimum Trading Days: 4 days");
+  dot("Phase 1 Time Limit: 30 days");
+  dot("Funded Profit Split: 80% to you");
+
+  h2("Why People Fail Challenges");
+  red("Overtrading on Day 1 — hitting daily limit immediately");
+  red("Revenge trading after first loss — second trade always bigger");
+  red("Trading NFP/CPI without closing positions first");
+  red("Rushing profit target in Week 3–4 by increasing lot size");
+  red("Holding trades over weekend — gap risk on Sunday open");
+
+  h2("First Payout Step by Step");
+  dot("Step 1: Complete minimum 14 calendar days of trading on funded account");
+  dot("Step 2: Reach minimum profit threshold required by firm");
+  dot("Step 3: Log into dashboard and click Request Payout");
+  dot("Step 4: Choose payment method — bank, crypto USDT, or Deel");
+  dot("Step 5: Processing takes 1–5 business days. leading firms typically 24–48 hours");
+  dot("Step 6: After receiving payout — reset mentally and start next month fresh");
+
+  h2("Income Potential — Real Numbers");
+  p("Based on 5% monthly return — conservative and sustainable target:");
+  dot("$10,000 account @ 5% = $500 gross = $400 after 80% split");
+  dot("$50,000 account @ 5% = $2,500 gross = $2,000 after split");
+  dot("$100,000 account @ 5% = $5,000 gross = $4,000 after split");
+  dot("3 x $100k accounts = $12,000/month from same strategy");
+  p("These numbers require consistent discipline every single month. Protect every payout.");
+
+  h2("Start Your Journey");
+  p("1. Get prop firm discount codes at: sadiquehussainwarsi.github.io/Sadikfinance/coupons.html");
+  p("2. Read the full blueprint at: sadiquehussainwarsi.github.io/Sadikfinance/blueprint.html");
+  p("3. Browse all partner prop firms at: sadiquehussainwarsi.github.io/Sadikfinance");
+
+  // Footer on last page
+  doc.setFontSize(9); doc.setTextColor(120,120,120);
+  doc.text("© Sadik Finance — sadiquehussainwarsi.github.io/Sadikfinance",105,285,{align:"center"});
+
+  doc.save("Sadik-Finance-Funded-Roadmap.pdf");
+}
+</script>
+<!-- PROP FIRM POPUP -->
+<div class="popup-overlay" id="firmPopup">
+  <div class="popup-box">
+    <button class="popup-close" onclick="closeFirmPopup()">X</button>
+    <div class="popup-title">Our Partner Prop Firms</div>
+    <div class="popup-sub">Use our exclusive discount codes to save on your challenge fee</div>
+    <div class="firm-grid">
+
+      <a href="/mavenfunded/" class="firm-card">
+        <img src="/logos/maven.png" alt="Maven Funded" class="firm-logo">
+        <div class="firm-info">
+          <div class="firm-name">Maven Funded</div>
+          <div class="firm-desc">Instant funding — up to 80% profit split</div>
+        </div>
+        <div class="firm-arrow">[→]</div>
+      </a>
+
+      <a href="/blueberryfunded/" class="firm-card">
+        <img src="/logos/blueberry.png" alt="Blueberry Funded" class="firm-logo">
+        <div class="firm-info">
+          <div class="firm-name">Blueberry Funded</div>
+          <div class="firm-desc">Trusted prop firm — flexible rules</div>
+        </div>
+        <div class="firm-arrow">[→]</div>
+      </a>
+
+      <a href="/fundedfirm/" class="firm-card">
+        <img src="/logos/fundedfirm.png" alt="Funded Firm" class="firm-logo">
+        <div class="firm-info">
+          <div class="firm-name">Funded Firm</div>
+          <div class="firm-desc">Fast payouts — scaling available</div>
+        </div>
+        <div class="firm-arrow">[→]</div>
+      </a>
+
+      <a href="/goatfunded/" class="firm-card">
+        <img src="/logos/goat.png" alt="Goat Funded Trader" class="firm-logo">
+        <div class="firm-info">
+          <div class="firm-name">Goat Funded Trader</div>
+          <div class="firm-desc">Competitive targets — great support</div>
+        </div>
+        <div class="firm-arrow">[→]</div>
+      </a>
+
+      <a href="/fundingpips/" class="firm-card">
+        <img src="/logos/fundingpips.png" alt="Funding Pips" class="firm-logo">
+        <div class="firm-info">
+          <div class="firm-name">Funding Pips</div>
+          <div class="firm-desc">No time limits — trader-friendly rules</div>
+        </div>
+        <div class="firm-arrow">[→]</div>
+      </a>
+
+    </div>
+  </div>
+</div>
+
+<script>
+function openFirmPopup(){ document.getElementById('firmPopup').classList.add('open'); document.body.style.overflow='hidden'; }
+function closeFirmPopup(){ document.getElementById('firmPopup').classList.remove('open'); document.body.style.overflow=''; }
+document.getElementById('firmPopup').addEventListener('click', function(e){ if(e.target===this) closeFirmPopup(); });
+</script>
+
+</body></html>
+
